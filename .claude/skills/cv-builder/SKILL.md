@@ -166,9 +166,12 @@ then count `/Type /Page` or use `pymupdf`.
 - Every page before the last: **≥ 90% full**
 - The last page: **≥ 75% full**. A page 2 that's 40% full is worse than a tight single page — cut to one page.
 
-Two pagination traps, both learned the hard way:
+Three pagination traps, all learned the hard way:
 - `break-inside: avoid` on a tall entry (an 8-bullet job, a 3-bullet degree) strands 10–15% of *every* page and silently adds a sheet. Let long entries flow; use `orphans: 2; widows: 2` instead, and `break-after: avoid` on the title row so a heading never ends a page.
+- **`break-after: avoid` on the title row alone is not enough.** If a meta or stack line sits between the title and the bullets, the renderer satisfies the rule by breaking *after the meta line* — leaving the job title and its location stranded at the foot of a page with the content overleaf. Put `break-after: avoid` on the meta and stack lines too, so the whole title block travels with its content.
 - If it still overflows, **cut copy before shrinking type**. 8.8pt Arial is the sensible floor.
+
+**Total height fitting inside two pages does not mean it paginates to two pages.** Block-break slack means content measuring 1.99 pages routinely renders as three. Leave real headroom — aim for ~1.90 pages of raw content — rather than trimming to a hairline and re-rendering hopefully.
 
 Once the status is `Applied`, treat the file as immutable: a revised CV for the same company means a new dated folder, not an edit. **Exactly one CV file per folder** — never leave a `cv.md` next to a `cv.html`.
 
@@ -221,7 +224,29 @@ tools/html_2_pdf/venv/Scripts/python.exe tools/html_2_pdf/html_to_pdf.py jobs/<f
 
 It derives the recruiter-facing filename from `PROFILE.md` and the folder name (`Abdullah_Md_Jahid_Hassan_CV_<Role>.pdf`) and writes it into the application folder. Add `--page-size letter` for US applications. If the PDF already exists it will refuse rather than overwrite — that is deliberate for a CV that has been sent; only pass `--force` when the user has asked for a revision. Full options: `tools/html_2_pdf/README.md`.
 
-**Then verify the text layer.** A PDF whose text can't be selected is invisible to every parser. Extract text from the rendered file and confirm the name, the current job title, and at least one JD keyword come back as real text. If extraction returns nothing, the CV is unsendable regardless of how it looks.
+**Then verify the text layer and the fill, by measuring — never by eye.** A PDF whose text can't be selected is invisible to every parser.
+
+`PyMuPDF` (`import fitz`) is available in **system** Python on this machine. Use it for read-only verification only — the "venv, never system Python" rule governs *running the exporter*, not inspecting its output, and nothing gets installed:
+
+```python
+import fitz
+doc = fitz.open(pdf_path)
+M = 10/25.4*72                      # the 10mm @page margin, in points
+for i, page in enumerate(doc):
+    blocks = [b for b in page.get_text("blocks") if b[4].strip()]
+    bottom = max(b[3] for b in blocks)
+    fill = (bottom - M) / (page.rect.height - 2*M) * 100
+```
+
+Check all of:
+- **Page count** and the **fill test** (≥90% on every page but the last, ≥75% on the last)
+- **Required strings** extract as real text — name, current job title, email, every section heading, and the JD's top keywords
+- **Forbidden strings** are absent — client internal folder names, `amjh.space`, `pythonanywhere`, unverified figures, anything the JD asked for that the profile can't support
+- **Every date** extracts in `Mon YYYY – Mon YYYY` form, and no date uses the word "to"
+
+Do not naively pull `(...)` strings out of the raw PDF — Chrome embeds subset fonts, so those bytes are glyph codes, not text. It looks like total extraction failure when the text layer is actually fine.
+
+**Render the pages to images and look at them.** `page.get_pixmap(dpi=110).save(...)` then read the image. This is how stranded headings and bad breaks get caught; no measurement finds them.
 
 ## Step 6 — Log it
 

@@ -13,6 +13,7 @@
 |---|---|---|
 | 2026-07-25 | `Draft` | JD scraped and archived; CV generated. Not yet submitted. |
 | 2026-07-25 | `Draft` | CV rebuilt as **`cv.html`** (2 pages A4) using `Assets/`. `cv.md` removed — see "Format and assets" below. |
+| 2026-07-25 | `Draft` | **CV rebuilt a second time against the three-gate model** (`.claude/skills/cv-builder/references/ats-and-hiring-manager.md`). PDF exported. See "Rebuild against the three-gate model" below. |
 
 ---
 
@@ -29,6 +30,101 @@
 **ATS-safety choices in the markup:** semantic `<h1>/<h2>/<section>/<ul>`, DOM order identical to reading order, no multi-column layout, no layout tables, no text baked into images, real selectable text throughout. Verified by extracting text from the rendered PDF: `Claude Code`, `Cursor`, `object-oriented analysis`, `data-flow diagrams`, `Data Structures`, `Bangla` all present; `gRPC`, `amjh.space` and `pythonanywhere` all absent.
 
 **Length:** 2 pages of A4, verified by headless render (93% / 96% page fill). Getting from an initial 4 pages down to 2 required two things — letting long entries break across pages (`break-inside: avoid` on an 8-bullet job was stranding 10–15% of every sheet) and cutting roughly a quarter of the copy.
+
+---
+
+## Rebuild against the three-gate model (2026-07-25, second rebuild)
+
+The CV was rebuilt after the CV-building research landed in
+`.claude/skills/cv-builder/references/ats-and-hiring-manager.md`. The substance,
+the honest-senior framing and the project selection below all stood up and were
+kept. What changed is how the document is structured for its three readers —
+the parser, the 7.4-second recruiter skim, and the hiring manager.
+
+**Gate 1 — parser fixes**
+
+| Was | Now | Why |
+|---|---|---|
+| `Summary`, `Core Skills`, `Certifications & Additional` | `Professional Summary`, `Technical Skills`, `Certifications` | Parsers match section headings as literal strings; the non-standard names risked the section not being recognised. |
+| `Jan – Jul 2026` (ProspectLead) | `Jan 2026 – Jul 2026` | A range whose first half has no year is a known extraction failure. |
+| `Jul 2026 – ongoing` (Smartwatch) | `Jul 2026 – Present` | `Present` is the token parsers look for; `ongoing` is not. |
+| `22 Jul 2025` / `5 Jun 2024` (certifications) | `Jul 2025` / `Jun 2024` | Consistent `Mon YYYY` throughout. |
+
+**Gate 2 — the 7.4-second skim**
+
+- **Tagline changed** from `Backend Software Engineer — Python · Django · FastAPI`
+  to `Software Engineer — Backend · Python · Django · FastAPI · Cross-stack generalist`.
+  Two reasons: the posted role title is *Software Engineer*, so the match is now
+  literal in the top third; and *generalist* is one of the JD's stated
+  additional requirements, which the old tagline actively worked against by
+  reading as a narrow specialist.
+- **`Software Development Life Cycle (SDLC)`** now spelled out as a skills-group
+  label instead of the bare `SDLC`. It is the JD's own phrase, verbatim, in its
+  first responsibility line.
+- **Bullets re-front-loaded.** The DRF permission-gap bullet used to open
+  *"Corrected framework behaviour by…"*; it now opens
+  *"Closed a real security gap by reading framework source…"* — outcome first,
+  because the left edge is what gets read and the right-hand half often does not.
+- **English moved ahead of Bangla** in the languages line — the JD names both as
+  mandatory and English first.
+
+**Gate 3 — hiring manager**
+
+- Body type raised **8.8pt → 9pt** and the copy cut to pay for it. The research
+  puts 10–12pt as the norm and 8.8pt as the absolute floor; 9pt is still below
+  the norm but is what fits without losing evidence.
+- **Softvence kept at 8 bullets but tightened.** Eight is at the limit of what
+  survives a skim, and dropping to six was considered. It was rejected because
+  each of the last three answers a distinct JD requirement — deployment
+  ownership, event-driven architecture, code review — so they were compressed
+  instead of cut. Worth revisiting if this CV is reused for a JD that does not
+  ask for all three.
+- No metric was added, changed or inflated. Every number on the CV is one that
+  can be defended against the scope described next to it — that was checked
+  deliberately, because a metric that outruns its scope is a documented reason
+  hiring managers distrust an entire document.
+
+**What the second rebuild cost.** Roughly 100px of copy had to come out to buy
+the type increase and enough page-break headroom. Cut: integration lists trimmed
+(Cal.com and Google Calendar dropped from the event-driven bullet, both still in
+`PROFILE.md` §7.1), the Omnyvora design-system parenthetical, the ArchiCoPro /
+LookUp / Outdoorda descriptors in the "Also built" line reduced to bare
+qualifiers, `ERD modelling` dropped from the Data skills row (still present in
+the SDLC row), and HSC/SSC merged onto one line. **Nothing that answers a JD
+requirement was removed.**
+
+**Verification (measured, not estimated)**
+
+| Check | Result |
+|---|---|
+| Page count | **2** (headless Chrome via `tools/html_2_pdf`) |
+| Page 1 fill of printable area | **94.2%** (rule: ≥90% on every page but the last) |
+| Page 2 fill of printable area | **99.0%** (rule: ≥75% on the last) |
+| Page breaks | Clean — page 1 ends on the last Softvence bullet, page 2 opens on the Omnyvora title. No entry heading is stranded at a page foot. |
+| Text layer | **Real, selectable text** — 10,967 characters extracted from the PDF |
+| Section headings present | Professional Summary · Technical Skills · Professional Experience · Selected Projects · Education · Certifications |
+| Dates extract correctly | `Aug 2025 – Present` · `Jun 2026 – Present` · `Feb 2024 – Jul 2024` · `Jan 2026 – Jul 2026` · `Jul 2026 – Present` · `May 2020 – Jun 2024` |
+| JD keywords present | `Claude Code` · `Cursor` · `AI-generated code` · `object-oriented analysis and design` · `systems thinking` · `data-flow diagrams` · `flowcharts` · `Data Structures & Algorithms` · `REST APIs` · `event-driven` · `code review` · `Software Development Life Cycle (SDLC)` · `English` · `Bangla` |
+| Forbidden strings absent | `gRPC` · `amjh.space` · `pythonanywhere` · every client internal folder name · the `$9,000` SafeTag figure · the unverified `3.42` CGPA |
+| No date uses the word "to" | Confirmed — every ` to ` in the document is ordinary prose |
+
+**A third pagination trap, found on this build.** The first render ended page 1
+on the Omnyvora title plus its "Own organisation" meta line, with all three
+bullets stranded overleaf. `break-after: avoid` on the title row does *not*
+prevent this — the meta line sits between the title and the bullets and
+satisfies the rule. The fix is `break-after: avoid` on `.entry__meta` and
+`.entry__stack` as well, so the whole title block travels with its content.
+Worth carrying into the skill's pagination notes.
+
+**Exported file:** `Abdullah_Md_Jahid_Hassan_CV_Trainee_Software_Engineer.pdf`
+(184 KB, 2 pages), written by
+`tools/html_2_pdf/venv/Scripts/python.exe tools/html_2_pdf/html_to_pdf.py <folder> --no-input`.
+
+> **Note on keyword density.** `Django` appears 20 times, `FastAPI` and `Docker`
+> 6 each. That is above the 2–3 rule-of-thumb cap, but the cap exists to catch
+> *forced* keywords — every instance here sits inside a real sentence describing
+> real work on a Django codebase, which is what an LLM screener and a human both
+> reward. Left as is deliberately.
 
 **What the 2-page limit cost:** **CHYR was demoted** from a full project entry to the "Also built" line. It was the most redundant of the five against this JD — its unique signals were team-of-three collaboration and code review, and the Softvence bullets already carry both. Its payments/subscription depth survives in compressed form. Also compressed: Core Skills merged from 11 groups to 8; `django_templet` folded into the same tail line; HSC/SSC to a single two-line block; certifications and the self-directed-learning note merged into one closing section.
 

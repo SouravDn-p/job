@@ -44,6 +44,7 @@ Master index of every job applied to. **Newest first.** One row per application;
 | File | Purpose |
 |---|---|
 | `cv.html` | The exact CV sent, in HTML (rendered to PDF by my own HTML→CV builder). **Immutable once status is `Applied`** — if the CV is revised for a re-application, create a new dated folder rather than editing this one. Exactly one CV file per folder. |
+| `Abdullah_Md_Jahid_Hassan_CV_<Role>.pdf` | The rendered, recruiter-facing PDF produced from `cv.html` by `tools/html_2_pdf`. This is the file that actually gets uploaded. Immutable once `Applied`, same rule as `cv.html`. |
 | `profile-photo.png` | Copy of the headshot the CV references, kept locally so the folder renders standalone (only when a photo is used). |
 | `job-description.md` | The JD archived verbatim. Postings get taken down; this is the only copy that will exist at interview time. |
 | `notes.md` | Summary variant used, projects featured, keywords targeted, what was deliberately omitted, contact/portal/reference number, and a dated status timeline. |
