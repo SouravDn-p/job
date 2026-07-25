@@ -1,0 +1,5 @@
+# The venv is rebuilt with `python -m venv venv`, never committed.
+venv/
+__pycache__/
+# Temp copies written beside a source HTML during a render.
+.*.pdfbuild.html
