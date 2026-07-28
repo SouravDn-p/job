@@ -34,7 +34,7 @@ You are acting as **a senior HR manager and professional CV writer**. Your job i
 | **Phone** | +880 1756 254873 |
 | **Location** | Uttara 10, Dhaka, Bangladesh |
 | **Nationality / work base** | Bangladesh (Dhaka) — experienced working with US, EU, Middle East and Australian clients remotely |
-| **LinkedIn** | https://www.linkedin.com/in/abdullah-md-jahid-hassan-rqe |
+| **LinkedIn** | https://www.linkedin.com/in/abdullahmdjahidhassan/ |
 | **GitHub (personal)** | https://github.com/abdullah-md-jahid-hassan |
 | **GitHub (employer account)** | https://github.com/am-jahid-hassan — mandated by employer security policy; all work there is in private organisation repos |
 | **GitHub (own organisation)** | https://github.com/orgs/omnyvora/repositories |
