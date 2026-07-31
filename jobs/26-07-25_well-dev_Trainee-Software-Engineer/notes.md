@@ -14,6 +14,7 @@
 | 2026-07-25 | `Draft` | JD scraped and archived; CV generated. Not yet submitted. |
 | 2026-07-25 | `Draft` | CV rebuilt as **`cv.html`** (2 pages A4) using `Assets/`. `cv.md` removed — see "Format and assets" below. |
 | 2026-07-25 | `Draft` | **CV rebuilt a second time against the three-gate model** (`.claude/skills/cv-builder/references/ats-and-hiring-manager.md`). PDF exported. See "Rebuild against the three-gate model" below. |
+| 2026-07-31 | `Draft` | **MCQ-exam preparation pack built** — one-day / 12-hour plan (11 sessions), 15 topics, **126 MCQs** in two sets, 4 read-aloud scripts. HR and technical-interview material written and parked without a plan. Research found two first-hand candidate reports naming all four rounds, the Quilgo platform and dozens of questions. See [`preparation/`](preparation/). |
 
 ---
 

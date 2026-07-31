@@ -1,0 +1,109 @@
+BLOCK B. DATABASES AND OBJECTS.
+
+This block is your strongest ground. You do this professionally every day. So the job here is not learning, it's putting exam words on things you already know. Move fast.
+
+First, SQL.
+
+The single most asked SQL question at WellDev is the execution order. And the point is that SQL does not run in the order you write it.
+
+You write SELECT first. But the database runs FROM first, to get the tables. Then WHERE, to throw away rows. Then GROUP BY, to bundle rows together. Then HAVING, to throw away whole groups. Then SELECT, to pick which columns you actually want. Then ORDER BY. Then LIMIT.
+
+Say that back to yourself. FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT.
+
+And here's why it matters, because this is the follow up. You cannot use a column alias you defined in SELECT inside a WHERE clause, because WHERE already ran, before SELECT existed. But you can use it in ORDER BY, because ORDER BY runs after. That's a real consequence of a real rule, and explaining it that way sounds much better than reciting the list.
+
+Same idea explains WHERE versus HAVING. WHERE filters individual rows before grouping. HAVING filters whole groups after. So you can't put COUNT star inside a WHERE, because the counting hasn't happened yet.
+
+Which brings us to the duplicates question, which has been asked at WellDev twice in different clothes. Find duplicate rows. And find products that share the same price. Same shape both times. You group by the column, and then you keep only the groups where the count is more than one. Group by email, having count star greater than one. Group by price, having count star greater than one. One pattern, two questions.
+
+Second highest salary. The clean answer is: select the maximum salary where the salary is less than the maximum salary. A subquery. The reason that beats order by with an offset is that it handles ties correctly. If two people both earn the top salary, the offset trick just hands you the top salary again.
+
+Joins. Inner join keeps only rows that match on both sides. Left join keeps everything from the left table and fills in nulls where there's no match. Right join is the mirror. Full outer keeps everything from both. And the classic follow up is, how do you find customers with no orders? Left join, then where orders dot id is null.
+
+Now the one they ask word for word. Delete versus truncate versus drop.
+
+Delete removes the rows you choose. It takes a WHERE clause, it's logged row by row so it's slow, and it can be rolled back.
+
+Truncate empties the whole table fast. No WHERE clause allowed. It normally resets the auto increment counter, and it doesn't fire row triggers.
+
+Drop removes the table itself. Structure and all. The table is gone.
+
+Don't just say truncate is a fast delete. Add the differences that matter, the no WHERE and the counter reset. That's the mark.
+
+Now database theory.
+
+ACID. Four promises about a transaction.
+
+A is atomicity. All or nothing. Money leaves one account and arrives in the other, or neither thing happens.
+
+C is consistency. The database never ends up breaking its own rules.
+
+I is isolation. Concurrent transactions don't see each other's half finished work.
+
+D is durability. Once it says committed, it survives a power cut.
+
+If they ask which one covers the double booking problem, it's isolation.
+
+Normalisation. This is about storing each fact exactly once.
+
+First normal form, every cell holds a single value, no repeating groups. Second normal form, every non key column depends on the whole key. Third normal form, no non key column depends on another non key column. The old mnemonic is: the key, the whole key, and nothing but the key.
+
+The practical version they ask is this. A table repeats the customer's full address on every order row. What's wrong, and what do you do? What's wrong is that if the customer moves, you have to update every single order row, and any row you miss leaves you with two contradictory answers. That's an update anomaly. You fix it by pulling the address into its own table and referencing it by key.
+
+But add the grown up caveat. Normalisation isn't always the goal. Real systems denormalise on purpose for read speed. So say, I'd normalise to third normal form, then denormalise selectively where read performance demands it. That's a much stronger answer.
+
+Indexes. An index is a sorted lookup structure, usually a B tree, that lets the database find rows without scanning all of them. Reads get much faster. But writes get slower, because every insert and update has to maintain the index too, and it eats storage. That's why you index the columns you filter and join on, not every column.
+
+Triggers. A trigger is code the database runs automatically when something is inserted, updated or deleted. It runs inside the database, not in your application. Common uses are audit history. And the related idea is cascading, where on delete cascade removes the child rows when you delete the parent.
+
+If they ask how else you'd detect changes in a database, say: triggers, an audit table, an updated at timestamp column, or change data capture from the write ahead log.
+
+SQL versus NoSQL. SQL gives you a fixed schema, real relationships, joins and strong transactional guarantees. NoSQL gives you schema flexibility and easier horizontal scaling, and often trades away some consistency to get it. Neither is better. It depends on whether your data has strong relationships that must stay correct together.
+
+Now object oriented programming.
+
+Four pillars. Encapsulation, inheritance, polymorphism, abstraction.
+
+Encapsulation is keeping state private and exposing controlled methods to change it. The point is protecting invariants. If nobody can set the balance directly, the balance can never go negative behind your back. And you already do this at the architecture level, with a service layer that owns every write so views never touch the database directly.
+
+Inheritance is a child class reusing a parent's behaviour. Your base model, giving every model soft delete and timestamps, is exactly that.
+
+Polymorphism. Now, don't just say many forms and stop. Say what it buys you. It means you can write code against the parent type, and it keeps working for every subclass, so adding a new subclass needs no change to the calling code. That's the answer they're listening for.
+
+Abstraction is hiding messy detail behind a simple interface.
+
+Access modifiers. Public, anyone can touch it. Private, only inside that class. Protected, that class and its children. And in Java there's a package private default.
+
+The question they ask is spot the violation. They'll show you a class with a private field and then some code outside trying to set that field directly. That's a compile error. Private means private. The fix is to go through the public method, which validates.
+
+Overloading versus overriding. Overloading is the same name with different parameters, decided at compile time. Overriding is a child replacing the parent's method, decided at run time. Remember it by the word ride. A child rides over the parent, at run time.
+
+Abstract class versus interface. An abstract class can hold state and half written methods, and you can only extend one. An interface is a pure contract and you can implement many. Practical rule: abstract class for shared state and shared behaviour, interface for a capability that unrelated classes can all satisfy.
+
+And composition versus inheritance. Prefer composition. Inheritance is the tightest coupling there is, so a change in the parent can break every subclass underneath it.
+
+Last, software engineering principles.
+
+The SDLC phases. Requirements, design, implementation, testing, deployment, maintenance.
+
+Waterfall runs those once, in sequence, and change is expensive once you've moved on. Agile repeats them in short sprints and expects requirements to change. Don't say agile has no documentation. It values working software over comprehensive documentation, which is not the same thing.
+
+SOLID. S, single responsibility, one class one reason to change. O, open closed, open to extend, closed to modify. L, Liskov, a child must work anywhere the parent works. I, interface segregation, many small interfaces beat one fat one. D, dependency inversion, depend on abstractions not concrete classes.
+
+Don't recite five letters with no meaning. Give one real example. Single responsibility is why your views never touch the database. Reads go through selectors, writes go through services. That one sentence beats a perfect recitation.
+
+Dependency injection is the practical face of the D. A class is given what it needs, instead of building it itself. The payoff is testability, because you can hand it a fake in a test instead of a real database.
+
+Testing levels. Unit is one piece in isolation. Integration is several pieces together. System is the whole thing. Acceptance is does it meet the requirement.
+
+And an ER diagram models entities, their attributes, and the relationships between them with cardinality. One to one, one to many, many to many. You've drawn these formally as a client deliverable, so if it comes up in an interview later, that's a story, not a revision topic.
+
+Three things to carry out of this block.
+
+One. FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY. And duplicates are always group by, having count greater than one.
+
+Two. Delete takes a WHERE and rolls back. Truncate empties fast with no WHERE. Drop removes the table.
+
+Three. Polymorphism means the calling code doesn't change when you add a subclass. Say the benefit, not the definition.
+
+Now go and do the questions.

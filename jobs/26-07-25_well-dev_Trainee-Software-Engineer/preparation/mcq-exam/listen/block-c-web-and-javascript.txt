@@ -1,0 +1,106 @@
+BLOCK C. WEB, APIS AND JAVASCRIPT.
+
+Two halves to this block. The first half, networking and REST, is mostly easy marks and you already know a lot of it. The second half, JavaScript, is your weakest area in the whole paper, and it's listed first in what candidates reported. So don't drift in the second half. That's the part that's actually worth your afternoon.
+
+First, HTTP status codes.
+
+Don't try to learn sixty of them. Learn the families by first digit, then a handful of specifics.
+
+One hundreds are informational, and they're rarely asked.
+
+Two hundreds mean success. Two hundred is OK. Two oh one is created, which is what a successful POST should return when it makes something new. Two oh four is success with no content, typical for a delete.
+
+Three hundreds are redirects. Three oh one is moved permanently, three oh two is temporary, three oh four is not modified.
+
+Four hundreds mean you, the client, got it wrong. Four hundred bad request. Four oh one. Four oh three. Four oh four not found. Four oh nine conflict. Four two nine too many requests.
+
+Five hundreds mean the server got it wrong. Five hundred internal error, five oh two bad gateway, five oh three unavailable.
+
+Now the trap, and it's the most common one there is. Four oh one versus four oh three. Four oh one means I don't know who you are. You're not authenticated. Four oh three means I know exactly who you are, and you still can't have it. You're authenticated but not authorised. Say it that way and you'll never mix them up.
+
+And the other mistake to avoid. Four oh four is a client error, not a server error. If you say four oh four means the server is broken, that's a very visible miss.
+
+Next, subnetting.
+
+An IP address has a network part and a host part. The slash number tells you how many bits belong to the network. Everything left over is for hosts.
+
+So the formula is: usable hosts equals two to the power of the host bits, minus two. And the minus two is because one address is the network address and one is the broadcast address, and neither can be given to a machine.
+
+Let me give you the ladder, and honestly, just memorise this ladder, because it's most of the marks.
+
+Slash twenty four gives two hundred and fifty four usable.
+Slash twenty five gives one hundred and twenty six.
+Slash twenty six gives sixty two.
+Slash twenty seven gives thirty.
+Slash twenty eight gives fourteen.
+Slash thirty gives two.
+
+Notice the pattern. Each step up halves it, roughly. Say the ladder out loud twice now. Twenty four, two fifty four. Twenty five, one twenty six. Twenty six, sixty two. Twenty seven, thirty. Twenty eight, fourteen. Thirty, two.
+
+Next, what happens when you type a URL and press enter. This is a story you recite in order.
+
+The browser checks its cache. Then DNS turns the domain name into an IP address, because you can't connect to a name, only to an address. Then a TCP connection opens, that's the three way handshake. Then TLS negotiates if it's HTTPS. Then the browser sends an HTTP GET request. That usually hits a reverse proxy, something like Nginx or Caddy, before it reaches the application server. The server responds with HTML and a status code. The browser parses that HTML into a DOM, discovers it also needs CSS, JavaScript and images, and fetches those. Then it renders the page and runs the JavaScript.
+
+TCP versus UDP, quickly. TCP is connection based, ordered and reliable. It acknowledges and retransmits. That's web and email. UDP just fires packets with no guarantee. That's video calls, games and DNS, where a late packet is worse than a lost one.
+
+Now REST. And this is your home ground, so this is quick.
+
+REST treats everything as a resource with an address, and the HTTP verb says what you want done to it.
+
+GET reads and changes nothing. POST creates. PUT replaces the whole thing. PATCH updates part of it. DELETE removes.
+
+Two words they may ask about. Safe means no side effects, and GET is safe. Idempotent means doing it twice has the same effect as doing it once. GET, PUT and DELETE are idempotent. POST is not, because two POSTs make two records.
+
+And that's exactly why webhook handlers need an idempotency key. You already do this in production, with a unique event id on the webhook table so a replayed webhook can't double charge anybody. If they ask about idempotency, that's your answer, and it's a real one.
+
+URL naming. Nouns, plural, no verbs in the path. Slash users slash forty two slash orders. Not slash get user orders.
+
+Pagination. Never return everything. Offset pagination is page and limit, simple but it drifts and can skip or repeat rows if the data changes underneath. Cursor pagination uses an after id, and it stays stable and fast on big tables.
+
+Health check. A cheap fast GET that returns two hundred plus the status of each dependency. Database, cache, queue. You've literally built one covering database, Redis, mail, and both Celery worker and beat.
+
+One honest note. The job description mentions gRPC. You have never used it. Don't claim it. Know what it is, binary protobuf over HTTP two, good for service to service, and say you'd learn it. A bluff that collapses under one follow up costs you more than the gap.
+
+Now. JavaScript. Sit up for this part.
+
+You're a Python developer, and the danger is that you'll answer JavaScript questions using Python reasoning. So deliberately switch languages in your head when you see one.
+
+The most asked JavaScript question in existence is double equals versus triple equals.
+
+Double equals converts the types before comparing. So the string five, in quotes, double equals the number five, is true.
+
+Triple equals compares value and type. So the string five triple equals the number five is false.
+
+Always use triple equals. And know one more pair: null double equals undefined is true, but null triple equals undefined is false.
+
+Var, let and const. Var is function scoped. It leaks out of if blocks and for loops to the whole function. Let and const are block scoped, they stay inside the curly braces.
+
+Hoisting. Declarations get moved to the top of their scope before the code runs. With var, the variable exists but holds undefined, so printing it before its line gives you undefined, not an error. With let and const, it exists but throws if you touch it early. That gap is called the temporal dead zone.
+
+And const stops reassignment, not mutation. You can still push into a const array. Reassigning the whole array would throw.
+
+Now the event loop, which is the hardest JavaScript question you're likely to get.
+
+JavaScript runs one thing at a time. Slow work like network calls and timers gets handed off, and the callback gets queued to run later. That's how single threaded code stays responsive. It's the same idea as async and await in FastAPI, which you already understand.
+
+But there are two queues, and they don't have equal priority. Promises go on the microtask queue. Timers, like setTimeout, go on the macrotask queue. And microtasks always run first.
+
+So if you see code that logs one, then sets a timeout logging two with zero delay, then a resolved promise logging three, then logs four, the output is one, four, three, two. Synchronous first, so one and four. Then the promise, three. Then the timer, two. Even with zero milliseconds, the timer goes last. That surprises people, and that's why they ask it.
+
+Closures. A closure is a function that keeps access to the variables from the scope where it was defined, even after that scope has finished. It's how JavaScript does private state. A counter function that remembers its count between calls, without exposing it.
+
+Null versus undefined. Undefined means no value was ever assigned. Null means somebody deliberately set it to nothing. And one oddity worth knowing, typeof null returns the string object, which is a long standing bug in the language.
+
+Events. Things that happen in the browser. Click, submit, keypress. Bubbling means the event fires on the target element first, then travels up through each parent. Stop propagation halts it. Bubbling is what makes event delegation work, one listener on a parent handling clicks on many children.
+
+And two quick ones. Map returns a new array with each item transformed, it does not change the original. Filter selects. Reduce collapses to a single value. Same mental model as a Python list comprehension. And an async function always returns a promise, even if you return a plain number.
+
+Three things to carry out of this block.
+
+One. Four oh one means I don't know who you are. Four oh three means I know and you still can't.
+
+Two. The subnet ladder. Twenty six gives sixty two. Twenty eight gives fourteen.
+
+Three. Double equals converts types, triple equals doesn't. And promises resolve before timers, even at zero delay.
+
+Now go and do the questions. And do the JavaScript ones twice.
