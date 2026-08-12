@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdullah Md Jahid Hassan — Python Developer</title>
+<style>
+/* ============================================================
+   Abdullah Md Jahid Hassan — CV
+   Target role : Python Developer — Exabyting (Dhaka)
+   Tier        : 3 — on-site, Dhaka (Mohakhali DOHS)
+   Layout ref  : Assets/CV Templates/cv_temp_1.png
+                 single column - left-aligned rules - photo top-right
+
+   JD leads with "Django expertise, proven hands-on" as the first and
+   loudest requirement, then FastAPI, async/event-driven architecture,
+   NoSQL and cloud as a plus. Summary, skills and bullets are ordered
+   to answer those in the JD's own order.
+
+   Honesty notes (CLAUDE.md hard rule 1):
+   - NoSQL claim is Redis (cache/broker/OTP/channel layer) — a genuine
+     NoSQL key-value store. No document-database (MongoDB) experience
+     exists in the profile and none is claimed here.
+   - Golang is not claimed; the JD's "Python or Golang" is satisfied by
+     Python alone.
+   - The JD's stated "2+ years" gate is not papered over: dates are
+     printed exactly as they are (Aug 2025 for Softvence), and the
+     summary leans on the promotion signal, not a fabricated tenure.
+
+   Built against the three-gate model in
+   .claude/skills/cv-builder/references/ats-and-hiring-manager.md
+   ============================================================ */
+
+@page { size: A4; margin: 9mm 12mm; }
+
+:root {
+  --ink:        #111111;
+  --ink-soft:   #3d3d3d;
+  --ink-mute:   #5f5f5f;
+  --rule:       #111111;
+  --rule-light: #cfcfcf;
+  --link:       #1a3f6b;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0 auto;
+  padding: 20px 22px 24px;
+  max-width: 210mm;
+  font-family: Arial, "Helvetica Neue", Helvetica, "Liberation Sans", sans-serif;
+  font-size: 9pt;
+  line-height: 1.27;
+  color: var(--ink);
+  background: #ffffff;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  font-family: "Consolas", "DejaVu Sans Mono", monospace;
+  font-size: .94em;
+}
+
+/* ---------- Header ------------------------------------------------ */
+
+.masthead {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 7px;
+  border-bottom: 2.5px solid var(--rule);
+}
+
+.masthead__id { flex: 1 1 auto; min-width: 0; }
+
+h1 {
+  margin: 0 0 2px;
+  font-size: 20pt;
+  line-height: 1.06;
+  font-weight: 700;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin: 0 0 5px;
+  font-size: 10.2pt;
+  color: var(--ink-soft);
+  letter-spacing: .2px;
+}
+
+.contact {
+  margin: 0;
+  font-size: 8.7pt;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.contact span { white-space: nowrap; }
+.contact .sep { color: var(--rule-light); padding: 0 3px; }
+
+.masthead__photo {
+  flex: 0 0 auto;
+  width: 23mm;
+  height: 28.75mm;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid var(--rule-light);
+}
+
+/* ---------- Sections --------------------------------------------- */
+
+section { margin-top: 10px; }
+
+h2 {
+  margin: 0 0 5px;
+  padding-bottom: 2px;
+  border-bottom: 1.4px solid var(--rule);
+  font-size: 10pt;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+p { margin: 0 0 4px; }
+p:last-child { margin-bottom: 0; }
+
+/* ---------- Skills ----------------------------------------------- */
+
+.skills > div { margin-bottom: 2px; }
+.skills .items { color: var(--ink-soft); }
+
+/* ---------- Entries (jobs, projects, education) ------------------- */
+
+.entry { margin-bottom: 6px; orphans: 2; widows: 2; }
+.entry:last-child { margin-bottom: 0; }
+
+.entry__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+.entry__title {
+  margin: 0;
+  font-size: 10pt;
+  font-weight: 700;
+}
+.entry__title .at { font-weight: 400; }
+
+.entry__when {
+  flex: 0 0 auto;
+  font-size: 8.6pt;
+  font-weight: 700;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.entry__meta {
+  margin: 1px 0 2px;
+  font-size: 8.6pt;
+  font-style: italic;
+  color: var(--ink-mute);
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+.entry__stack {
+  margin: 1px 0 2px;
+  font-size: 8.5pt;
+  color: var(--ink-mute);
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+ul { margin: 0; padding-left: 14px; }
+li { margin-bottom: 1px; orphans: 2; widows: 2; }
+li:last-child { margin-bottom: 0; }
+
+/* ---------- Tail lines ------------------------------------------- */
+
+.tail {
+  margin-top: 6px;
+  font-size: 8.6pt;
+  color: var(--ink-mute);
+}
+.tail b { color: var(--ink); }
+
+/* ---------- Print ------------------------------------------------- */
+
+@media print {
+  body { padding: 0; }
+  a { color: var(--ink); }
+  h2 { page-break-after: avoid; break-after: avoid; }
+  .masthead { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__id">
+    <h1>Abdullah Md Jahid Hassan</h1>
+    <p class="tagline">Python Developer &mdash; Django &middot; FastAPI &middot; Asynchronous &amp; Event-Driven Systems &middot; REST APIs &middot; AWS</p>
+    <p class="contact">
+      <span>Uttara 10, Dhaka, Bangladesh</span><span class="sep">|</span><span>+880&nbsp;1756&nbsp;254873</span><span class="sep">|</span><span><a href="mailto:abdullahmdjahidhassan@gmail.com">abdullahmdjahidhassan@gmail.com</a></span><br>
+      <span><a href="https://www.linkedin.com/in/abdullahmdjahidhassan/">linkedin.com/in/abdullahmdjahidhassan</a></span><span class="sep">|</span><span><a href="https://github.com/abdullah-md-jahid-hassan">github.com/abdullah-md-jahid-hassan</a></span><span class="sep">|</span><span><a href="https://github.com/orgs/omnyvora/repositories">github.com/orgs/omnyvora</a></span><br>
+      <span><b>Languages:</b> Bangla (native) &middot; English (professional) &middot; Hindi (conversational)</span>
+    </p>
+  </div>
+  <img class="masthead__photo" src="profile-photo.png" alt="Abdullah Md Jahid Hassan">
+</header>
+
+<section>
+  <h2>Professional Summary</h2>
+  <p>Backend developer with hands-on, production <b>Django</b> experience — REST APIs built and operated with <b>Django REST Framework</b> and <b>FastAPI</b> across eight platforms in eleven months, four on each framework. Currently <b>Senior Python Executive at Softvence Agency</b>, promoted from Junior Python Developer within eleven months on the strength of end-to-end delivery rather than tenure. Deep, practical experience with <b>asynchronous and event-driven architectures</b>: Celery and Celery Beat task queues with isolated routing, Django Channels over WebSockets, and idempotent webhook processing for Stripe and n8n. Practical <b>NoSQL</b> experience with Redis — used as cache, task broker, OTP store and channel layer in every production system, alongside PostgreSQL and MySQL. Deploys and operates its own infrastructure on <b>AWS</b> (EC2, IAM, SES, RDS, S3). Founder and sole backend engineer of <b>Omnyvora</b>, a Django REST modular monolith built from a blank repository.</p>
+</section>
+
+<section>
+  <h2>Technical Skills</h2>
+  <div class="skills">
+    <div><b>Python &amp; Django:</b> <span class="items">Python 3 (primary) &middot; Django 5.2 &middot; Django REST Framework 3.16 &middot; SimpleJWT &middot; <code>django-allauth</code> / <code>dj-rest-auth</code> social login &middot; <code>django-filter</code> &middot; <code>django-storages</code> &middot; <code>drf-yasg</code> / Swagger / OpenAPI &middot; Gunicorn</span></div>
+    <div><b>FastAPI &amp; asynchronous Python:</b> <span class="items">FastAPI 0.119 &middot; Tortoise ORM 0.25 + Aerich migrations &middot; Pydantic v2 &middot; async DB drivers (asyncpg, aiomysql) &middot; Uvicorn &middot; async application-factory / lifespan patterns &middot; <code>python-socketio</code></span></div>
+    <div><b>Asynchronous &amp; event-driven architectures:</b> <span class="items">Celery 5 + Celery Beat with isolated queue routing &middot; Django Channels / WebSockets over Daphne &middot; APScheduler &middot; idempotent webhook processing (Stripe, n8n) &middot; signal-driven design</span></div>
+    <div><b>Databases &mdash; SQL &amp; NoSQL:</b> <span class="items">PostgreSQL (primary) &middot; MySQL &middot; SQLite &middot; <b>Redis 7</b> as a NoSQL key-value store (cache, Celery broker, OTP store, WebSocket channel layer) &middot; Django ORM optimisation (<code>select_related</code>/<code>prefetch_related</code>, <code>bulk_update</code>) &middot; schema design, normalisation, ER modelling</span></div>
+    <div><b>Cloud &amp; DevOps:</b> <span class="items"><b>AWS</b> EC2 (multi-region), IAM, SES, RDS, S3 &middot; Hostinger VPS &middot; Cloudflare R2 &middot; Docker (multi-stage builds) &middot; Docker Compose &middot; GitHub Actions CI/CD &middot; Nginx &middot; Caddy &middot; Linux server administration</span></div>
+    <div><b>Backend ecosystem &amp; engineering practices:</b> <span class="items">REST API design &amp; versioning &middot; unified response envelope &middot; layered <code>models &rarr; selectors &rarr; services &rarr; serializers &rarr; views</code> separation &middot; JWT auth with refresh rotation &amp; blacklisting &middot; rate limiting &middot; Django <code>TestCase</code> &amp; pytest &middot; migration-drift CI gating &middot; structured logging &amp; health dashboards</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Professional Experience</h2>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Senior Python Executive <span class="at">&mdash; Softvence Agency</span></p>
+      <span class="entry__when">Aug 2025 &ndash; Present</span>
+    </div>
+    <p class="entry__meta">Mohakhali, Dhaka &middot; Full-time, on-site &middot; Promoted from Junior Python Developer, Jul 2026</p>
+    <ul>
+      <li><b>Delivered eight production backends in eleven months</b> &mdash; four on <b>Django</b> and Django REST Framework, four on <b>FastAPI</b> &mdash; each owned end to end from data model through REST API, containerisation and live deployment, across an AI voice-receptionist SaaS, an AI lead-generation platform, an e-commerce estate and a members' content portal.</li>
+      <li><b>Promoted from Junior Python Developer to Senior Python Executive within eleven months</b> on the strength of end-to-end ownership rather than tenure.</li>
+      <li><b>Built and operate asynchronous, event-driven systems in production:</b> Celery and Celery Beat task queues with explicit, isolated routing keys, Django Channels over WebSockets for low-latency delivery, and idempotent webhook processing for Stripe payment events and n8n automation callbacks.</li>
+      <li><b>Used Redis &mdash; a NoSQL key-value store &mdash; as the cache, Celery broker, OTP store and WebSocket channel layer</b> across every production backend, alongside PostgreSQL and MySQL as the relational stores.</li>
+      <li><b>Authored a reusable production-grade Django REST starter</b> (JWT auth, Redis-backed OTP, async Celery email, structured logging, unified response envelope, health dashboard, Docker, CI/CD) that became the baseline for new company projects, cutting setup from days to hours.</li>
+      <li><b>Owned the full deployment lifecycle personally</b> &mdash; multi-stage Docker images, GitHub Actions CI/CD (build &rarr; push &rarr; SSH deploy), and provisioning on AWS EC2 and Hostinger VPS behind Nginx or Caddy.</li>
+      <li><b>Integrated and productionised third-party platforms end to end</b> &mdash; Stripe, Tap Payments, ElevenLabs, Twilio, Cal.com, OpenAI (with per-request token accounting) and n8n &mdash; each behind an event-driven or webhook-based contract.</li>
+      <li><b>Closed a real security gap by reading framework source rather than documentation:</b> Django REST Framework's default permission class skips the <code>view_&lt;model&gt;</code> check on safe methods; I wrote a subclass enforcing it and rolled it across projects.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Founder, Lead Engineer &amp; Designer <span class="at">&mdash; Omnyvora</span></p>
+      <span class="entry__when">Jun 2026 &ndash; Present</span>
+    </div>
+    <p class="entry__meta">Own organisation &middot; github.com/orgs/omnyvora &middot; Sole backend contributor</p>
+    <ul>
+      <li><b>Took a product from a blank repository to a running platform alone</b> &mdash; a multi-tool SaaS on <b>Django REST Framework</b>, organised into four bounded domains with strict layering, deployed via Docker and GitHub Actions CI/CD.</li>
+      <li><b>Designed Celery task queues as isolated, explicitly-routed default/activity queues</b> &mdash; a deliberate event-driven decision, documented in code, so slow analytics writes can never block business tasks &mdash; backed by <b>Redis</b> as broker and cache.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Web Development Intern <span class="at">&mdash; Cyber Hundred</span></p>
+      <span class="entry__when">Feb 2024 &ndash; Jul 2024</span>
+    </div>
+    <p class="entry__meta">Khilkhet, Dhaka &middot; On-site &middot; Certificate issued Jun 2024</p>
+    <ul>
+      <li>Built frontend and backend features in HTML5, CSS, Bootstrap, PHP and MySQL across multiple client web projects; managed databases through phpMyAdmin; used Git and GitHub for collaborative development.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Selected Projects</h2>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">CHYR &mdash; AI Voice-Receptionist SaaS <span class="at">&middot; backend developer</span></p>
+      <span class="entry__when">Apr 2026 &ndash; May 2026</span>
+    </div>
+    <p class="entry__stack">Python &middot; Django 5.2 &middot; DRF &middot; PostgreSQL &middot; Redis &middot; Celery + Beat &middot; Docker &middot; AWS EC2</p>
+    <ul>
+      <li><b>Built the asynchronous billing and subscription engine</b> &mdash; Celery Beat renewal tasks, a Tap Payments dunning retry state machine, and idempotent Stripe webhook event processing &mdash; across a multi-tenant business model spanning four service verticals.</li>
+      <li><b>Designed the event-driven telephony and voice-agent domain:</b> phone provisioning with a conditional call-forwarding policy engine, and an ElevenLabs-backed multilingual voice registry across four languages.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">ProspectLead &mdash; AI Lead-Generation SaaS <span class="at">&middot; lead backend developer</span></p>
+      <span class="entry__when">Jan 2026 &ndash; Jul 2026</span>
+    </div>
+    <p class="entry__stack">prospectlead.ai &middot; Django &middot; Django REST Framework &middot; PostgreSQL &middot; Redis &middot; Celery + Beat &middot; Stripe &middot; n8n</p>
+    <ul>
+      <li><b>Owned the credit-based billing engine end to end</b> &mdash; an append-only ledger with a running-balance snapshot, reserve-on-submit / finalise-on-callback semantics, and a <b>Celery Beat watchdog</b> that auto-fails and refunds any job with no callback after six hours.</li>
+      <li><b>Built the event-driven automation contract with n8n</b> &mdash; a bearer-token-authenticated inbound webhook triggering an external scrape-and-extraction pipeline &mdash; plus idempotent Stripe webhook processing via a unique event-ID table.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">OCReels &mdash; Async FastAPI Media Platform <span class="at">&middot; backend developer</span></p>
+      <span class="entry__when">Jun 2026 &ndash; Jul 2026</span>
+    </div>
+    <p class="entry__stack">ocreels.com &middot; FastAPI 0.119 &middot; Tortoise ORM (async) &middot; PostgreSQL/MySQL async drivers &middot; Redis &middot; Celery + APScheduler</p>
+    <ul>
+      <li><b>Built on a fully asynchronous, auto-discovering FastAPI architecture</b> &mdash; an application factory with an async lifespan hook, dynamically registered routes and per-app signal auto-import &mdash; running asyncpg/aiomysql drivers and Redis end to end.</li>
+      <li><b>Implemented event-driven moderation and payout domains:</b> a reel content-review state machine, per-platform share attribution, and a creator-earnings ledger driven by casino-affiliate tracking events.</li>
+      <li>Hand-rolled RBAC with a startup <code>sync_permissions()</code> routine reconciling the permission table against code on every boot, and immutable one-year cache-control headers on media served from a Cloudflare R2 / S3-backed CDN.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">ArchiCoPro &mdash; Members' Content Portal <span class="at">&middot; lead backend developer</span></p>
+      <span class="entry__when">Jun 2026 &ndash; Jul 2026</span>
+    </div>
+    <p class="entry__stack">archicopro.cloud &middot; FastAPI &middot; Tortoise ORM &middot; PostgreSQL &middot; Redis &middot; Celery &middot; Docker Compose &middot; Caddy</p>
+    <ul>
+      <li><b>Lead backend developer</b> on a FastAPI portal with feature-level RBAC &mdash; role-level and per-user permission overrides across articles, forums, trainings and a document library &mdash; plus a moderated-forum state machine with a full audit trail.</li>
+      <li><b>Built self-service platform operations:</b> admin-editable SMTP configuration and a scheduled backup system with configurable frequency, so the association could manage its own mail and backups without engineering involvement.</li>
+    </ul>
+  </div>
+
+  <p class="tail"><b>Also delivered</b> &mdash; <b>Tundra</b> (thundra.de, three-service Django + FastAPI e-commerce estate) &middot; <b>LookUp</b> (Django REST gamification backend) &middot; <b><code>django_templet</code></b>, my own open-source reusable Django REST starter with Celery, Docker and CI/CD built in.</p>
+</section>
+
+<section>
+  <h2>Education &amp; Certifications</h2>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">B.Sc. in Computer Science &amp; Engineering</p>
+      <span class="entry__when">May 2020 &ndash; Jun 2024</span>
+    </div>
+    <p class="entry__meta">IUBAT &mdash; International University of Business Agriculture and Technology, Dhaka &middot; CGPA 3.59 / 4.00 &middot; Degree certificate issued 30 May 2024</p>
+    <ul>
+      <li><b>Thesis:</b> <i>Implementation of Parallel Data Transmission in Li-Fi Technology Using RGB Light</i>. <b>Practicum:</b> <i>Development of an Internet Service Provider System</i>. <b>Coursework:</b> Data Structures &amp; Algorithms &middot; DBMS &middot; Software Engineering &middot; Operating Systems &middot; Computer Networks.</li>
+    </ul>
+  </div>
+
+  <p class="tail"><b>Python-Django</b> &mdash; EDGE, Enhancing Digital Government and Economy (Bangladesh Government ICT programme) &middot; Jul 2025 &nbsp;&middot;&nbsp; <b>Internship Certificate</b> &mdash; Cyber Hundred &middot; Jun 2024 &nbsp;&middot;&nbsp; References available on request.</p>
+</section>
+
+<section>
+  <h2>Day-to-Day Tooling</h2>
+  <p>API contract testing and documentation with <b>Bruno</b> and <b>Postman</b> collections, Swagger/OpenAPI via <code>drf-yasg</code>; <b>Sentry</b> error monitoring; migration-drift and lint gates (<code>manage.py makemigrations --check</code>, ESLint, pytest) wired into CI; daily use of <b>Claude Code</b> and <b>Cursor</b> as accelerators, with a hand-written <code>CONTEXT.md</code>/<code>CLAUDE.md</code> on every repository encoding the architectural rules the agent must follow. Remote collaboration with US, German, Middle Eastern and Australian clients through the agency's Fiverr-sourced pipeline.</p>
+</section>
+
+</body>
+</html>
