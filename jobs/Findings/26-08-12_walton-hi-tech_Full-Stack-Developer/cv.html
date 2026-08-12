@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdullah Md Jahid Hassan — Full-Stack Developer</title>
+<style>
+/* ============================================================
+   Abdullah Md Jahid Hassan — CV
+   Target role : Full-Stack Developer — Walton Hi-Tech Industries PLC
+                 (ICT dept, Bashundhara R/A, Dhaka)
+   Tier        : 3 — on-site, Dhaka
+
+   IMPORTANT CONTEXT: the JD's "Core Stack" line names Node.js alongside
+   React/Angular. This profile has ZERO Node.js backend experience — the
+   backend is entirely Python (Django/FastAPI); Next.js is used only as a
+   frontend framework. This was flagged to Abdullah directly before this
+   file was written; he chose to proceed with an honest CV rather than
+   skip the posting. Node.js and Angular are NOT claimed anywhere below
+   (CLAUDE.md hard rule 1). The CV instead leads with the genuine, JD-
+   relevant overlap: full-stack breadth (Python backend + React/Next.js
+   frontend), system design & architecture, API/system integrations, and
+   stakeholder requirement gathering — the JD's other four asks, all
+   strongly evidenced. "Leadership & mentoring" is framed honestly as
+   technical/delivery leadership ("lead backend developer," largest
+   commit share), never as formal people management, since no mentoring
+   evidence exists in the profile.
+
+   Built against the three-gate model in
+   .claude/skills/cv-builder/references/ats-and-hiring-manager.md
+   ============================================================ */
+
+@page { size: A4; margin: 9mm 12mm; }
+
+:root {
+  --ink:        #111111;
+  --ink-soft:   #3d3d3d;
+  --ink-mute:   #5f5f5f;
+  --rule:       #111111;
+  --rule-light: #cfcfcf;
+  --link:       #1a3f6b;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0 auto;
+  padding: 20px 22px 24px;
+  max-width: 210mm;
+  font-family: Arial, "Helvetica Neue", Helvetica, "Liberation Sans", sans-serif;
+  font-size: 9pt;
+  line-height: 1.27;
+  color: var(--ink);
+  background: #ffffff;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  font-family: "Consolas", "DejaVu Sans Mono", monospace;
+  font-size: .94em;
+}
+
+/* ---------- Header ------------------------------------------------ */
+
+.masthead {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 7px;
+  border-bottom: 2.5px solid var(--rule);
+}
+
+.masthead__id { flex: 1 1 auto; min-width: 0; }
+
+h1 {
+  margin: 0 0 2px;
+  font-size: 20pt;
+  line-height: 1.06;
+  font-weight: 700;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin: 0 0 5px;
+  font-size: 10.2pt;
+  color: var(--ink-soft);
+  letter-spacing: .2px;
+}
+
+.contact {
+  margin: 0;
+  font-size: 8.7pt;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.contact span { white-space: nowrap; }
+.contact .sep { color: var(--rule-light); padding: 0 3px; }
+
+.masthead__photo {
+  flex: 0 0 auto;
+  width: 23mm;
+  height: 28.75mm;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid var(--rule-light);
+}
+
+/* ---------- Sections --------------------------------------------- */
+
+section { margin-top: 10px; }
+
+h2 {
+  margin: 0 0 5px;
+  padding-bottom: 2px;
+  border-bottom: 1.4px solid var(--rule);
+  font-size: 10pt;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+p { margin: 0 0 4px; }
+p:last-child { margin-bottom: 0; }
+
+/* ---------- Skills ----------------------------------------------- */
+
+.skills > div { margin-bottom: 2px; }
+.skills .items { color: var(--ink-soft); }
+
+/* ---------- Entries (jobs, projects, education) ------------------- */
+
+.entry { margin-bottom: 6px; orphans: 2; widows: 2; }
+.entry:last-child { margin-bottom: 0; }
+
+.entry__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+.entry__title {
+  margin: 0;
+  font-size: 10pt;
+  font-weight: 700;
+}
+.entry__title .at { font-weight: 400; }
+
+.entry__when {
+  flex: 0 0 auto;
+  font-size: 8.6pt;
+  font-weight: 700;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.entry__meta {
+  margin: 1px 0 2px;
+  font-size: 8.6pt;
+  font-style: italic;
+  color: var(--ink-mute);
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+.entry__stack {
+  margin: 1px 0 2px;
+  font-size: 8.5pt;
+  color: var(--ink-mute);
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+ul { margin: 0; padding-left: 14px; }
+li { margin-bottom: 1px; orphans: 2; widows: 2; }
+li:last-child { margin-bottom: 0; }
+
+/* ---------- Tail lines ------------------------------------------- */
+
+.tail {
+  margin-top: 6px;
+  font-size: 8.6pt;
+  color: var(--ink-mute);
+}
+.tail b { color: var(--ink); }
+
+/* ---------- Print ------------------------------------------------- */
+
+@media print {
+  body { padding: 0; }
+  a { color: var(--ink); }
+  h2 { page-break-after: avoid; break-after: avoid; }
+  .masthead { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__id">
+    <h1>Abdullah Md Jahid Hassan</h1>
+    <p class="tagline">Full-Stack Developer &mdash; Python/Django Backend &middot; React/Next.js Frontend &middot; System Design &amp; Architecture &middot; API Integrations</p>
+    <p class="contact">
+      <span>Uttara 10, Dhaka, Bangladesh</span><span class="sep">|</span><span>+880&nbsp;1756&nbsp;254873</span><span class="sep">|</span><span><a href="mailto:abdullahmdjahidhassan@gmail.com">abdullahmdjahidhassan@gmail.com</a></span><br>
+      <span><a href="https://www.linkedin.com/in/abdullahmdjahidhassan/">linkedin.com/in/abdullahmdjahidhassan</a></span><span class="sep">|</span><span><a href="https://github.com/abdullah-md-jahid-hassan">github.com/abdullah-md-jahid-hassan</a></span><span class="sep">|</span><span><a href="https://github.com/orgs/omnyvora/repositories">github.com/orgs/omnyvora</a></span><br>
+      <span><b>Languages:</b> Bangla (native) &middot; English (professional) &middot; Hindi (conversational)</span>
+    </p>
+  </div>
+  <img class="masthead__photo" src="profile-photo.png" alt="Abdullah Md Jahid Hassan">
+</header>
+
+<section>
+  <h2>Professional Summary</h2>
+  <p><b>Full-stack engineer</b> who owns systems end to end &mdash; backend architecture through to frontend delivery and UI/UX design. Currently <b>Senior Python Executive at Softvence Agency</b>, promoted from Junior Python Developer within eleven months, designing and building <b>REST APIs and system integrations</b> (Stripe, OpenAI, Twilio, Cal.com, n8n) across eight production backends. Founder and sole engineer of <b>Omnyvora</b>, where I built the entire platform alone: a domain-driven backend and a <b>Next.js 16 / React 19 / TypeScript</b> frontend, architected as four bounded domains with no cross-domain foreign keys so the system can scale into services without a rewrite. Strong <b>system-design</b> background &mdash; formal requirement analysis, ERDs, DFDs, and an in-place <b>architecture migration</b> on a live client platform &mdash; with a track record of <b>gathering requirements directly from stakeholders</b> and translating them into technical specifications and working software.</p>
+</section>
+
+<section>
+  <h2>Technical Skills</h2>
+  <div class="skills">
+    <div><b>Full-stack development:</b> <span class="items">Backend: Python 3 &middot; Django 5.2 &middot; Django REST Framework &middot; FastAPI. Frontend: <b>React 19</b> &middot; <b>Next.js 16</b> (App Router) &middot; TypeScript 5 &middot; Tailwind CSS 4 &middot; shadcn/ui + Radix. UI/UX design, design systems and design tokens</span></div>
+    <div><b>APIs &amp; system integrations:</b> <span class="items">REST API design &amp; versioning &middot; unified response envelope &middot; webhook idempotency &middot; Stripe, Tap Payments, OpenAI, ElevenLabs, Twilio, Cal.com, Google Calendar, n8n, Firebase Cloud Messaging integrations</span></div>
+    <div><b>System design &amp; architecture:</b> <span class="items">Domain-driven bounded contexts &middot; modular monolith designed for service extraction &middot; layered <code>models &rarr; selectors &rarr; services &rarr; serializers &rarr; views</code> separation &middot; ERDs, DFDs, use-case &amp; activity diagrams &middot; requirement analysis &amp; specification authoring &middot; architecture migration of a live codebase</span></div>
+    <div><b>Performance &amp; scalability:</b> <span class="items">Query optimisation &amp; N+1 elimination &middot; Redis caching &middot; isolated Celery task-queue routing &middot; immutable CDN cache headers &middot; composite database indexes &middot; live health dashboards</span></div>
+    <div><b>DevOps &amp; cloud:</b> <span class="items">Docker (multi-stage builds) &middot; Docker Compose &middot; GitHub Actions CI/CD &middot; AWS (EC2, IAM, SES, RDS, S3) &middot; Hostinger VPS &middot; Nginx &middot; Caddy &middot; Linux server administration</span></div>
+    <div><b>Frontend engineering (depth):</b> <span class="items">TanStack Query (server state) &middot; Zustand (client state) &middot; React Hook Form + Zod &middot; dnd-kit drag-and-drop &middot; Axios with silent token refresh &middot; feature-sliced architecture</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Professional Experience</h2>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Senior Python Executive <span class="at">&mdash; Softvence Agency</span></p>
+      <span class="entry__when">Aug 2025 &ndash; Present</span>
+    </div>
+    <p class="entry__meta">Mohakhali, Dhaka &middot; Full-time, on-site &middot; Promoted from Junior Python Developer, Jul 2026</p>
+    <ul>
+      <li><b>Delivered eight production backends in eleven months</b> &mdash; designing REST APIs, system integrations and the underlying architecture for each, from data model through to live deployment.</li>
+      <li><b>Promoted from Junior Python Developer to Senior Python Executive within eleven months</b> on the strength of end-to-end ownership rather than tenure.</li>
+      <li><b>Designed system architecture and integrations</b> for AI voice, e-commerce, lead-generation and content-portal platforms &mdash; Stripe, Tap Payments, OpenAI, ElevenLabs, Twilio, Cal.com and n8n, each behind a documented API contract.</li>
+      <li><b>Gathered requirements directly from stakeholder calls and Statements of Work</b>, authoring formal requirement specifications, ERDs, DFDs and use-case diagrams as versioned design documents during client onboarding.</li>
+      <li><b>Migrated an existing backend into a new, layered architecture</b> on a live client platform, then extended it with feature-level access control &mdash; the exact shape of work a system redesign asks for.</li>
+      <li><b>Optimised system performance and scalability:</b> query optimisation and N+1 elimination on a high-traffic product catalogue, isolated task-queue routing so slow analytics work never blocks business requests, and immutable cache headers on CDN-served media.</li>
+      <li><b>Owned deployment and CI/CD personally</b> &mdash; Docker, GitHub Actions, AWS EC2 &mdash; so architecture decisions carried through to a running, monitored system.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Founder, Lead Engineer &amp; Designer <span class="at">&mdash; Omnyvora</span></p>
+      <span class="entry__when">Jun 2026 &ndash; Present</span>
+    </div>
+    <p class="entry__meta">Own organisation &middot; github.com/orgs/omnyvora &middot; Sole contributor across backend, frontend and design</p>
+    <ul>
+      <li><b>Took a full-stack product from a blank repository to a running platform alone</b> &mdash; architected a domain-driven backend and built the entire <b>Next.js 16 / React 19 / TypeScript</b> frontend myself.</li>
+      <li><b>Designed the system architecture as four bounded domains with no cross-domain foreign keys</b>, so any domain can be extracted into its own service without a rewrite &mdash; documented in a 57&nbsp;KB API reference.</li>
+      <li><b>Built the frontend with a feature-sliced architecture</b>, TanStack Query for server state, drag-and-drop content management, and a token-driven design system I designed myself.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Web Development Intern <span class="at">&mdash; Cyber Hundred</span></p>
+      <span class="entry__when">Feb 2024 &ndash; Jul 2024</span>
+    </div>
+    <p class="entry__meta">Khilkhet, Dhaka &middot; On-site &middot; Certificate issued Jun 2024</p>
+    <ul>
+      <li>Built frontend and backend features in HTML5, CSS, Bootstrap, PHP and MySQL across multiple client web projects; collaborated on project planning and execution with the team.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Selected Projects</h2>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">ArchiCoPro &mdash; Members' Content Portal <span class="at">&middot; lead backend developer &middot; architecture migration</span></p>
+      <span class="entry__when">Jun 2026 &ndash; Jul 2026</span>
+    </div>
+    <p class="entry__stack">archicopro.cloud &middot; FastAPI &middot; Tortoise ORM &middot; PostgreSQL &middot; Redis &middot; Celery &middot; Docker Compose &middot; Caddy</p>
+    <ul>
+      <li><b>Migrated an existing backend into a new architecture</b>, then designed feature-level RBAC &mdash; role-level permissions with per-user overrides &mdash; across articles, forums, trainings and a document library.</li>
+      <li><b>Lead backend developer</b> with the largest share of commits; built a moderated-forum state machine with a full audit trail and admin-editable platform operations (SMTP, scheduled backups).</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">CHYR &mdash; AI Voice-Receptionist SaaS <span class="at">&middot; backend developer &middot; system integrations</span></p>
+      <span class="entry__when">Apr 2026 &ndash; May 2026</span>
+    </div>
+    <p class="entry__stack">Python &middot; Django 5.2 &middot; DRF &middot; PostgreSQL &middot; Redis &middot; AWS EC2</p>
+    <ul>
+      <li><b>Designed and integrated six third-party systems into one platform</b> &mdash; dual payment providers (Stripe + Tap Payments), ElevenLabs voice synthesis, Twilio-style telephony, and Cal.com booking &mdash; each behind its own API contract.</li>
+      <li><b>Designed the multi-tenant business architecture</b> spanning four service verticals, with role-based org membership and expiring invitation tokens.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">ProspectLead &mdash; AI Lead-Generation SaaS <span class="at">&middot; lead backend developer &middot; UI/UX designer</span></p>
+      <span class="entry__when">Jan 2026 &ndash; Jul 2026</span>
+    </div>
+    <p class="entry__stack">prospectlead.ai &middot; Django &middot; Django REST Framework &middot; PostgreSQL &middot; Redis &middot; Celery &middot; Stripe &middot; n8n</p>
+    <ul>
+      <li><b>Gathered the product requirements myself</b> and authored the shared specification document (problem statement, flow, webhook contract) the whole team built from.</li>
+      <li><b>Designed the product's UI/UX</b> &mdash; landing page and dashboard &mdash; in addition to owning the backend architecture and billing engine: the full stakeholder-to-shipped-feature loop.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Tundra &mdash; AI-Enhanced E-Commerce Platform <span class="at">&middot; backend developer &middot; system architecture</span></p>
+      <span class="entry__when">Apr 2026 &ndash; May 2026</span>
+    </div>
+    <p class="entry__stack">thundra.de &middot; Next.js frontend &middot; Django REST backend &middot; FastAPI AI service &middot; PostgreSQL &middot; Redis &middot; AWS EC2 &middot; Caddy</p>
+    <ul>
+      <li><b>Designed a three-service architecture</b> &mdash; a Next.js frontend, a Django REST backend and a separate FastAPI AI image-generation service &mdash; each independently containerised and deployed behind one shared reverse proxy on a single host.</li>
+      <li><b>Authored the complete client handover documentation</b> for all three services: a six-chapter, plain-language operations guide covering server setup, CI/CD for each service, and a security-cleanup chapter revoking my own access &mdash; direct evidence of documenting a system for someone else to own.</li>
+    </ul>
+  </div>
+
+  <p class="tail"><b>Also delivered</b> &mdash; <b>OCReels</b> (ocreels.com, async FastAPI media platform) &middot; <b><code>django_templet</code></b>, my own open-source reusable Django REST starter with Celery, Docker and CI/CD built in.</p>
+</section>
+
+<section>
+  <h2>Education &amp; Certifications</h2>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">B.Sc. in Computer Science &amp; Engineering</p>
+      <span class="entry__when">May 2020 &ndash; Jun 2024</span>
+    </div>
+    <p class="entry__meta">IUBAT &mdash; International University of Business Agriculture and Technology, Dhaka &middot; CGPA 3.59 / 4.00 &middot; Degree certificate issued 30 May 2024</p>
+    <ul>
+      <li><b>Thesis:</b> <i>Implementation of Parallel Data Transmission in Li-Fi Technology Using RGB Light</i>. <b>Practicum:</b> <i>Development of an Internet Service Provider System</i>. <b>Coursework:</b> Data Structures &amp; Algorithms &middot; DBMS &middot; Software Engineering &middot; Operating Systems &middot; Computer Networks.</li>
+    </ul>
+  </div>
+
+  <p class="tail"><b>Python-Django</b> &mdash; EDGE, Enhancing Digital Government and Economy (Bangladesh Government ICT programme) &middot; Jul 2025 &nbsp;&middot;&nbsp; <b>Internship Certificate</b> &mdash; Cyber Hundred &middot; Jun 2024 &nbsp;&middot;&nbsp; References available on request.</p>
+</section>
+
+<section>
+  <h2>Stakeholder Collaboration &amp; Delivery Leadership</h2>
+  <p>Work directly with clients to gather requirements &mdash; from recorded discovery calls and Statements of Work through to versioned requirement specifications, ERDs and data-flow diagrams delivered as formal design documents during onboarding. Lead backend developer (largest share of commits) on two platforms, coordinating with frontend, QA and DevOps engineers across each project's lifecycle from architecture through production support. Wrote a reusable Django REST foundation and per-app developer guides now used as the onboarding baseline for other engineers joining a project &mdash; documentation written to transfer ownership, not just to record it. Remote collaboration experience with US, German, Middle Eastern and Australian stakeholders through the agency's client pipeline. Treat performance and scalability as part of the same requirement-gathering conversation as feature scope &mdash; from database query plans to CDN cache policy &mdash; rather than an afterthought fixed post-launch.</p>
+</section>
+
+</body>
+</html>
