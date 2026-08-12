@@ -1,4 +1,4 @@
-# html_2_pdf — CV HTML → PDF exporter
+﻿# html_2_pdf — CV HTML → PDF exporter
 
 Turns a CV written as HTML into a print-ready PDF with a filename a recruiter can
 file without renaming it.
@@ -41,7 +41,7 @@ tools\html_2_pdf\venv\Scripts\python.exe tools\html_2_pdf\html_to_pdf.py
 
 ```
 HTML → PDF · CV export
-Path to the CV HTML file (or its application folder): C:\...\jobs\26-07-25_well-dev_Trainee-Software-Engineer
+Path to the CV HTML file (or its application folder): C:\...\jobs\Applied\26-07-25_well-dev_Trainee-Software-Engineer
 PDF name (Enter to accept) [Abdullah_Md_Jahid_Hassan_CV_Trainee_Software_Engineer.pdf]:
 Wrote C:\...\Abdullah_Md_Jahid_Hassan_CV_Trainee_Software_Engineer.pdf
   2 pages, 61 KB, rendered by chrome.exe
@@ -56,7 +56,7 @@ A pasted path may keep its quotes; drag-and-drop from Explorer works too.
 $PY = "tools\html_2_pdf\venv\Scripts\python.exe"
 
 # point it at the application folder — it finds cv.html and derives the name
-& $PY tools\html_2_pdf\html_to_pdf.py jobs\26-07-25_well-dev_Trainee-Software-Engineer
+& $PY tools\html_2_pdf\html_to_pdf.py jobs\Applied\26-07-25_well-dev_Trainee-Software-Engineer
 
 # explicit name
 & $PY tools\html_2_pdf\html_to_pdf.py cv.html --name "Abdullah Hassan CV"
@@ -82,7 +82,7 @@ First rule that applies wins:
    the application folder, which already follows `YY-MM-DD_<company>_<Role>`:
 
    ```
-   jobs/26-07-25_well-dev_Trainee-Software-Engineer/cv.html
+   jobs/Applied/26-07-25_well-dev_Trainee-Software-Engineer/cv.html
      └─> Abdullah_Md_Jahid_Hassan_CV_Trainee_Software_Engineer.pdf
    ```
 

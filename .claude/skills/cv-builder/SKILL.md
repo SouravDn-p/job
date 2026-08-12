@@ -1,15 +1,46 @@
 ---
 name: cv-builder
-description: Generate an ATS-optimised CV tailored to a specific job description from PROFILE.md, then record the application in jobs/LOG.md. Use when the user supplies a job description, asks for a CV or résumé for a role, or wants to apply somewhere. Also use to update the status of an existing logged application.
+description: Generate an ATS-optimised CV tailored to a specific job description from PROFILE.md, then record the job in jobs/jobs_log.csv under jobs/Findings/ or jobs/Applied/. Use when the user supplies a job description, asks for a CV or résumé for a role, wants to apply somewhere, or wants a found job logged. Also use to update the status of an existing logged job.
 ---
 
 # CV Builder
 
-Generate a CV tailored to one job description, then log the application so it can be retrieved months later.
+Generate a CV tailored to one job description, then log the job so it can be retrieved months later.
 
 You are acting as a **senior HR manager and professional CV writer** who knows how automated applicant-tracking systems parse and rank CVs, and what a hiring manager decides in the thirty seconds after that.
 
 **Reference:** `references/ats-and-hiring-manager.md` holds the research this procedure is built on, with sources. Read it when a decision isn't covered below, or when the user asks *why* a rule exists. Everything in this file is a distillation of it.
+
+**Folder conventions:** `jobs/README.md` is authoritative for the `jobs/` layout, the CSV columns and the status vocabulary. Read it before writing anything under `jobs/`.
+
+---
+
+## Where the work lands — read this first
+
+```
+jobs/
+├── jobs_log.csv        THE log. One row per job, found or applied. There is no LOG.md.
+├── Findings/           jobs found, not yet applied to     → status Found · Draft
+└── Applied/            jobs actually applied to           → status Applied and beyond
+```
+
+- **One job = one folder**, named `YY-MM-DD_<company-slug>_<Role-Name>/`, date first.
+- A folder **moves** `Findings/` → `Applied/` on submission. Move, never copy. **A job must never exist in both.** The folder name does not change — its date is the day the job was found.
+- Every folder has a row in `jobs/jobs_log.csv`, and every row has a folder.
+
+## The priority tiers — name one on every job
+
+From `CLAUDE.md` § Job-search preferences. Fills the `priority_tier` CSV column and opens every `notes.md`.
+
+| Tier | What |
+|---|---|
+| **1** | **Remote** — company in Bangladesh or anywhere globally. Both rank equally. The top priority. |
+| **2** | **Government job in Bangladesh** in the same field or expertise (software / IT / ICT / CS), including semi-government and autonomous bodies. |
+| **3** | **On-site in Bangladesh.** The fallback. |
+
+Hybrid is tier 3 unless the on-site requirement is genuinely occasional — say which. Relocation abroad is not on the list; do not surface it unless asked. Tier never overrides fit: a tier 1 role he isn't qualified for still loses to a tier 3 he is.
+
+**Before logging any found job, it must clear four gates: real · still open · a genuine fit against `PROFILE.md` · legitimate (not a scam or harvesting front).** Anything failing one of them gets no `Findings/` folder and no `Found` row — mention it separately as a near-miss instead. If he asked for a number, that number is a target, not a quota: return fewer and say so. Full rule in `CLAUDE.md` § A number I give you is a target, not a quota.
 
 ---
 
@@ -37,9 +68,12 @@ If the user hasn't supplied one, ask for it before doing anything else. You need
 
 Also ask (one message, not one at a time) for anything missing that changes the output:
 - Company name and exact role title as posted
-- Where they found it (LinkedIn / company site / Fiverr / referral / recruiter)
-- Location and work type (on-site Dhaka / remote / hybrid / relocation)
+- Where they found it (LinkedIn / BDJobs / company site / Fiverr / referral / recruiter)
+- Location and work type (remote-global / remote-Bangladesh / government / on-site Dhaka / hybrid) — this fixes the **priority tier**
 - Deadline, if any, and **how long the posting has been up** — it changes the urgency advice
+- Whether it has already been applied to, or is only a finding
+
+**Check `jobs/Findings/` first.** If a folder for this job already exists, work in it rather than creating a second one — and check whether anything of a *higher* tier is sitting there unapplied. Say so if there is.
 
 ## Step 1 — Read the profile in full
 
@@ -58,7 +92,11 @@ If something expected is missing — no headshot, no matching template — say s
 
 Extract, and note explicitly:
 
-- **Knockouts** — anything that will be a yes/no gate on the form: work authorisation, location/timezone, degree, years of experience, a named certification. Flag these to the user immediately; a knockout he can't clear is worth knowing *before* the CV is built.
+- **The priority tier** — 1, 2 or 3, from the table above. State it before anything else; it changes what the CV emphasises and how urgently to advise applying.
+- **Knockouts** — anything that will be a yes/no gate on the form: work authorisation, location/timezone, degree, years of experience, a named certification. Flag these to the user immediately; a knockout he can't clear is worth knowing *before* the CV is built. Tier-specific ones that are easy to miss:
+  - **Tier 1, global remote:** required timezone overlap, contractor vs employee status, how they pay into Bangladesh, whether "remote" is actually "remote within <country>".
+  - **Tier 1, remote in Bangladesh:** occasional-office clauses that make it hybrid in practice.
+  - **Tier 2, government:** exact degree title and class, certificate issue dates, CGPA, age limits, quota categories, and a hard application deadline that does not move. These forms are rigid — the CGPA flag (`PROFILE.md` §17.1) matters far more here than elsewhere.
 - **Hard requirements** — the must-haves, usually under "Requirements" or "You have"
 - **Nice-to-haves** — "Bonus", "Preferred", "It's a plus"
 - **The exact vocabulary used.** Record the literal phrases. Mirror them: if the JD says "REST APIs", write "REST APIs". Semantic/LLM matching in 2026 means near-synonyms usually still match, so **do not mangle a sentence to force a literal string in** — but where the phrasing is equally natural, use theirs. It costs nothing, it survives the keyword search that 99.7% of recruiters still run, and it reads as deliberate to a human.
@@ -95,6 +133,16 @@ Z is where the JD's technology keywords belong; that's what an LLM screener rewa
 **Never let a metric outrun its scope.** Hiring managers are actively sceptical of numbers disproportionate to the work described, and a number that doesn't add up makes them distrust the whole document — and it *will* be probed in the interview.
 
 **Show trajectory.** Promotion from Junior Python Developer to Senior Python Executive within eleven months is one of the strongest signals in the profile. State it explicitly; don't let it be inferred from two title lines.
+
+**Tier-specific emphasis** — apply on top of the JD tailoring, never instead of it:
+
+| Tier | Push to the top third | Why |
+|---|---|---|
+| **1 — remote** | Evidence of owning systems end-to-end without supervision, working with international clients, written communication, CI/CD and deployment ownership. Name the timezone (`Dhaka, Bangladesh · UTC+6`) plainly in the contact line. | A distributed team screens for whether he can be trusted unsupervised and whether the hours overlap. Both questions get answered before they read the bullets. |
+| **2 — Bangladesh government** | Formal education block with exact degree title, institution and certificate date; certifications; the full legal name. | These are checked against documents, not skimmed. Accuracy outranks punch. Flag the unverified CGPA loudly (`PROFILE.md` §17.1). |
+| **3 — on-site Bangladesh** | The standard build. Local market, photo usually expected. | No special handling. |
+
+None of this licenses a new claim. Everything still traces to `PROFILE.md` — this is about ordering evidence that already exists.
 
 **Projects** — select 3–5 using each project's *"Best for JDs about…"* tag. Prefer recent and substantial over old and simple; recent work weighs most because the stack moves. Client work (§7) generally outranks personal work (§9) unless the JD is for a domain a personal project matches better. For anything under §7, obey the NDA rules in `CLAUDE.md`: product names only, never internal folder names, never client source.
 
@@ -150,9 +198,13 @@ Three passes, one per gate. Verify every line.
 - [ ] No dead links (`amjh.space`) — see `CLAUDE.md` hard rule 6
 - [ ] Contact details correct (§1)
 
-## Step 5 — Write the application folder
+## Step 5 — Write the job folder
 
-Create `jobs/YY-MM-DD_<company-slug>_<Role-Name>/` using **today's date** (check it — do not assume). **The date comes first** so the folder list sorts chronologically.
+**Pick the folder first:**
+
+- If a `jobs/Findings/YY-MM-DD_…/` folder for this job already exists — **use it.** Do not create a second folder and do not rename it; its date is the day the job was found.
+- Otherwise create `jobs/Findings/YY-MM-DD_<company-slug>_<Role-Name>/` using **today's date** (check it — do not assume), unless the user says he is submitting now, in which case create it directly under `jobs/Applied/`.
+- **The date comes first** in the name so the folder list sorts chronologically.
 
 Write three files:
 
@@ -189,12 +241,16 @@ Once the status is `Applied`, treat the file as immutable: a revised CV for the 
 ```markdown
 # <Company> — <Role>
 
+**Priority tier:** <1 / 2 / 3> — <remote · government BD · on-site BD>, and one line on why.
+
 ## Application
 | Field | Value |
 |---|---|
-| Applied | YYYY-MM-DD |
+| Found | YYYY-MM-DD |
+| Applied | YYYY-MM-DD (blank until submitted) |
 | Source | |
 | Location / type | |
+| Deadline | |
 | Reference / application ID | |
 | Contact | |
 | Salary discussed | |
@@ -208,6 +264,8 @@ Once the status is `Applied`, treat the file as immutable: a revised CV for the 
 - **Weak spots:** <JD requirements not fully covered — prepare answers for these>
 
 ## Status timeline
+- YYYY-MM-DD — Found
+- YYYY-MM-DD — Draft (CV built)
 - YYYY-MM-DD — Applied
 
 ## Interview prep
@@ -248,23 +306,42 @@ Do not naively pull `(...)` strings out of the raw PDF — Chrome embeds subset 
 
 **Render the pages to images and look at them.** `page.get_pixmap(dpi=110).save(...)` then read the image. This is how stranded headings and bad breaks get caught; no measurement finds them.
 
-## Step 6 — Log it
+## Step 6 — Log it in `jobs/jobs_log.csv`
 
-Prepend a row to the table in `jobs/LOG.md` (newest first, renumber so #1 is newest):
+**There is no `LOG.md`.** The log is `jobs/jobs_log.csv`. Read it first, then **append** a row at the bottom (or update the job's existing row). `id` is the next integer and is **never reused**.
+
+Columns, in order:
 
 ```
-| 1 | 2026-07-25 | Acme Corp | Senior Backend Engineer | Remote (EU) | LinkedIn | Applied | 2026-07-25 | [folder](26-07-25_acme-corp_Senior-Backend-Engineer/) |
+id,date,title,type,location,priority_tier,short_description,company,role,source,status,updated,folder_local_location
 ```
 
-If the CV is generated but not yet submitted, use `Draft` and leave the `Applied` date blank until the user confirms submission.
+Example:
 
-Then **recompute the counts in the header table** at the top of `LOG.md`.
+```
+2,2026-08-04,Senior Backend Engineer,Remote,Global,1,"Distributed Python/FastAPI team, 4h UTC overlap required.",Acme Corp,Backend Engineer,LinkedIn,Draft,2026-08-04,jobs/Findings/26-08-04_acme-corp_Senior-Backend-Engineer
+```
 
-Remove the placeholder `*No applications logged yet.*` row the first time a real row is added.
+Rules:
+- **Quote any field containing a comma.** A short_description almost always needs quoting.
+- Dates are `YYYY-MM-DD`, always. Never `26/07/24`.
+- `date` = date **found** for `Findings/` rows, date **applied** for `Applied/` rows. `updated` = the last status change.
+- `priority_tier` is never blank.
+- `folder_local_location` is repo-relative with forward slashes, and must match where the folder actually is.
+- If the CV is generated but not yet submitted, the status is `Draft` and the folder stays in `Findings/`.
+
+## Step 6b — When he confirms he has submitted
+
+1. **Move** the folder `jobs/Findings/<name>/` → `jobs/Applied/<name>/`. Move, never copy; leave nothing behind. The name does not change.
+2. Update that CSV row: `status` → `Applied`, `updated` → today, `date` → the submission date, `folder_local_location` → the new path.
+3. Append `- YYYY-MM-DD — Applied` to the `## Status timeline` in `notes.md`, and fill the `Applied` row of its table.
+
+Do all three in one edit. A folder in `Applied/` with a `Draft` row, or a CSV path pointing at a folder that moved, is exactly the failure this log exists to prevent.
 
 ## Step 7 — Report back
 
 Tell the user, briefly:
+- **The priority tier**, and whether anything of a higher tier is still sitting unapplied in `jobs/Findings/`
 - Where the CV was written, and the **verified** page count and text-layer check
 - Which summary variant and which projects you chose, and why
 - Which assets you used — which template informed the layout, whether a photo was included and why
@@ -279,13 +356,13 @@ Tell the user, briefly:
 
 When the user says anything like *"got a call from Acme"*, *"rejected by X"*, *"interview Thursday"*:
 
-1. Find the application folder (grep `jobs/LOG.md` for the company).
-2. Update the `Status` and `Updated` columns in `LOG.md`.
-3. Append a dated line to the `## Status timeline` in that folder's `notes.md`.
-4. Recompute the header counts in `LOG.md`.
+1. Find the job's row — grep `jobs/jobs_log.csv` for the company. `folder_local_location` gives you the folder.
+2. Update `status` **and** `updated` in that row. Use the exact vocabulary: `Found` · `Draft` · `Applied` · `Screening` · `Task/Test` · `Interview` · `Final` · `Offer` · `Rejected` · `No response` · `Withdrawn`.
+3. If the status crosses from `Draft` to `Applied`, run **Step 6b** — the folder moves to `Applied/`.
+4. Append a dated line to the `## Status timeline` in that folder's `notes.md`.
 
-Keep both in sync — the log is the index, the notes are the record.
+Keep both in sync — the CSV is the index, the notes are the record. If they disagree, the notes win and the CSV gets corrected.
 
 ## Interview retrieval
 
-When asked *"what did I send to X?"* or *"prep me for the X interview"*: read that folder's `notes.md` first (it holds the story that was told), then `cv.html`, then `job-description.md`. Lead the answer with the projects featured and the weak spots recorded — those are what the interview will probe. Then work through every quantified bullet on the CV and check he can defend the number; hiring managers probe metrics that look large relative to scope.
+When asked *"what did I send to X?"* or *"prep me for the X interview"*: find the folder via `jobs/jobs_log.csv`, then read that folder's `notes.md` first (it holds the story that was told), then `cv.html`, then `job-description.md`. Lead the answer with the projects featured and the weak spots recorded — those are what the interview will probe. Then work through every quantified bullet on the CV and check he can defend the number; hiring managers probe metrics that look large relative to scope.

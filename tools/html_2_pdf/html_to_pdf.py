@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Convert a CV written as HTML into a print-ready, properly-named PDF.
 
 Rendering is done by headless Chrome (or Edge / Chromium / Brave — whichever is
@@ -29,7 +29,7 @@ Run it bare and it asks for what it needs — the HTML path, then the PDF name
 Or pass everything up front, which is how a script or the cv-builder skill
 should call it:
 
-    $PY tools/html_2_pdf/html_to_pdf.py jobs/26-07-25_well-dev_Trainee-Software-Engineer
+    $PY tools/html_2_pdf/html_to_pdf.py jobs/Applied/26-07-25_well-dev_Trainee-Software-Engineer
     $PY tools/html_2_pdf/html_to_pdf.py cv.html --name "Abdullah Hassan CV.pdf"
     $PY tools/html_2_pdf/html_to_pdf.py cv.html --role "Backend Engineer" --with-company
     $PY tools/html_2_pdf/html_to_pdf.py cv.html --out "~/Desktop/Custom Name.pdf"

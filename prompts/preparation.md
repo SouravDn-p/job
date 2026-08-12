@@ -4,16 +4,20 @@
 >
 > ```
 > Read prompts/preparation.md and follow it.
-> Job:   jobs/26-07-25_well-dev_Trainee-Software-Engineer
+> Job:   jobs/Applied/26-07-25_well-dev_Trainee-Software-Engineer
 > Stage: MCQ exam
 > Time:  1 day, about 12 hours.
 > ```
+>
+> **Preparation is built for jobs in `jobs/Applied/` only.** A job still in `jobs/Findings/` has not
+> been applied to, so there is no process to prepare for. If he names one, say so and offer to build
+> the CV instead. Folder conventions: `jobs/README.md`.
 >
 > **Stage** is which step of the hiring process to prepare for — the MCQ test, the HR interview, the
 > technical interview, a take-home task. Each one gets its own folder and its own plan (§5.0).
 > Name several if you want several. Ask for another later and it becomes another folder.
 >
-> Everything below is the instruction set. It is reusable across every job in `jobs/`.
+> Everything below is the instruction set. It is reusable across every job in `jobs/Applied/`.
 > Different companies run different exams — the research step decides the shape of the output,
 > not a fixed template.
 
@@ -81,7 +85,9 @@ The material is for **Abdullah Md Jahid Hassan** only. Write for him, not for a 
 9. **Extend, never replace.** Question banks only ever grow. See §7.
 10. **Never rewrite `cv.html`, `job-description.md` or the CV files** in the job folder. Preparation
     is additive. The only existing file you may touch is `notes.md` (append a dated line) and
-    `jobs/LOG.md` (status only, if he says the status changed).
+    `jobs/jobs_log.csv` (the `status` and `updated` columns only, if he says the status changed).
+11. **Never move a job folder between `Findings/` and `Applied/`.** That move belongs to the
+    application step, not to preparation. If a folder looks misplaced, say so and stop.
 
 ---
 
@@ -89,7 +95,7 @@ The material is for **Abdullah Md Jahid Hassan** only. Write for him, not for a 
 
 **Required from him:**
 
-- **Which job** — a folder under `jobs/`, or a job description he pastes.
+- **Which job** — a folder under `jobs/Applied/`, or a job description he pastes.
 - **How much time** — e.g. "3 days", "2 weeks, 2 hours a night", "the exam is tomorrow at 10am".
 - **Which stage** of the hiring process to prepare for — the MCQ test, the HR interview, the
   technical interview, a take-home task, a final round. He may name one, several, or all of them.
@@ -105,11 +111,22 @@ name, the round he is at, the interviewer's name or title.
 
 **Always read first, before any research:**
 
-- `jobs/<folder>/job-description.md` — the role, the stack, the seniority.
-- `jobs/<folder>/notes.md` — what the CV emphasised. **His interview story must match the CV they
-  read.** If the CV led with FastAPI and Docker, the prep leads there too.
-- `jobs/<folder>/cv.html` — the exact document in front of the interviewer.
+- `jobs/Applied/<folder>/job-description.md` — the role, the stack, the seniority.
+- `jobs/Applied/<folder>/notes.md` — what the CV emphasised, and the **priority tier** at the top.
+  **His interview story must match the CV they read.** If the CV led with FastAPI and Docker, the
+  prep leads there too.
+- `jobs/Applied/<folder>/cv.html` — the exact document in front of the interviewer.
 - `PROFILE.md` — **in full.** Every personal answer comes from here.
+- `jobs/jobs_log.csv` — the row for this job: status, source, tier. Use it to find the folder if he
+  names a company rather than a path.
+
+**The priority tier shapes the prep** (`CLAUDE.md` § Job-search preferences):
+
+| Tier | Prepare extra for |
+|---|---|
+| **1 — remote** | Async-work questions: how he communicates in writing, how he works unsupervised, overlap hours, home setup, internet reliability, and — for global remote — contractor status and how he invoices. Expect an English-fluency read on the call itself. |
+| **2 — Bangladesh government** | Written/MCQ papers weighted to general knowledge, Bengali, English and maths alongside the technical portion; a viva with a board rather than an engineer; document verification. Confirm the exam syllabus from the official circular, not from a blog. |
+| **3 — on-site Bangladesh** | The standard shape: DSA, OOP, database, the JD's stack, an HR round. |
 
 ---
 
@@ -442,12 +459,12 @@ time he does not have, and do not refuse to plan because the time is short.
 
 When the preparation folder is created or extended:
 
-1. Append a dated line to `jobs/<folder>/notes.md` under its status timeline —
+1. Append a dated line to `jobs/Applied/<folder>/notes.md` under its status timeline —
    e.g. `2026-07-31 — MCQ-exam preparation pack built (one-day plan, 96 questions).`
    Name the **stage** in that line, so the timeline shows what was prepared and when.
-2. **Do not change the `Status` in `LOG.md`** unless he tells you the stage moved. If he says
-   "I got an interview call", then update **both** `LOG.md` (`Status` + `Updated`) and the
-   `notes.md` timeline, using the exact status vocabulary from `CLAUDE.md`.
+2. **Do not change the `status` in `jobs/jobs_log.csv`** unless he tells you the stage moved. If he
+   says "I got an interview call", then update **both** the CSV row (`status` + `updated`) and the
+   `notes.md` timeline, using the exact status vocabulary from `jobs/README.md`.
 3. Keep `preparation/` self-contained. If it references an image or a PDF, copy it in.
 
 ---
@@ -493,4 +510,4 @@ Keep the reply short. He has a folder to read; do not duplicate it in chat.
 | "They sent the assessment details" | Re-run §4 with the new information, update `research.md` and the affected `plan.md`, and say what changed |
 | "The exam is tomorrow now" | Re-plan against the new deadline using §8.2; keep the bank and the material intact |
 | "Give me a mock" | Run a timed mock in the real format, in chat, then log the score in that stage's progress table |
-| "I got the interview / offer / rejection" | §9.2 — update `LOG.md` and `notes.md` together |
+| "I got the interview / offer / rejection" | §9.2 — update `jobs/jobs_log.csv` and `notes.md` together |

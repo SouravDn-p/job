@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdullah Md Jahid Hassan — Software Engineer (Python/Django)</title>
+<style>
+/* ============================================================
+   Abdullah Md Jahid Hassan — CV
+   Target role : Software Engineer (Python/Django) — Bohubrihi (EdTech),
+                 leading development of the Bohubrihi v2.0 platform
+   Tier        : 3 — on-site, Dhaka (Kalabagan)
+   Layout ref  : Assets/CV Templates/cv_temp_1.png
+                 single column - left-aligned rules - photo top-right
+
+   Framing: the requisition asks 12-18 months but the work described is
+   leading a v2.0 rebuild with CTO-track equity. Built as an honest
+   senior CV — the same call taken on the WellDev application — leading
+   with platform-architecture and rebuild evidence, not downplayed.
+
+   Honesty note (CLAUDE.md hard rule 1): MongoDB is listed as a core
+   requirement and appears NOWHERE on this CV. It is a genuine gap.
+
+   Built against the three-gate model in
+   .claude/skills/cv-builder/references/ats-and-hiring-manager.md
+   ============================================================ */
+
+@page { size: A4; margin: 9mm 12mm; }
+
+:root {
+  --ink:        #111111;
+  --ink-soft:   #3d3d3d;
+  --ink-mute:   #5f5f5f;
+  --rule:       #111111;
+  --rule-light: #cfcfcf;
+  --link:       #1a3f6b;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0 auto;
+  padding: 20px 22px 24px;
+  max-width: 210mm;
+  font-family: Arial, "Helvetica Neue", Helvetica, "Liberation Sans", sans-serif;
+  font-size: 9pt;
+  line-height: 1.27;
+  color: var(--ink);
+  background: #ffffff;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  font-family: "Consolas", "DejaVu Sans Mono", monospace;
+  font-size: .94em;
+}
+
+/* ---------- Header ------------------------------------------------ */
+
+.masthead {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 7px;
+  border-bottom: 2.5px solid var(--rule);
+}
+
+.masthead__id { flex: 1 1 auto; min-width: 0; }
+
+h1 {
+  margin: 0 0 2px;
+  font-size: 20pt;
+  line-height: 1.06;
+  font-weight: 700;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin: 0 0 5px;
+  font-size: 10.2pt;
+  color: var(--ink-soft);
+  letter-spacing: .2px;
+}
+
+.contact {
+  margin: 0;
+  font-size: 8.7pt;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.contact span { white-space: nowrap; }
+.contact .sep { color: var(--rule-light); padding: 0 3px; }
+
+.masthead__photo {
+  flex: 0 0 auto;
+  width: 23mm;
+  height: 28.75mm;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid var(--rule-light);
+}
+
+/* ---------- Sections --------------------------------------------- */
+
+section { margin-top: 10px; }
+
+h2 {
+  margin: 0 0 5px;
+  padding-bottom: 2px;
+  border-bottom: 1.4px solid var(--rule);
+  font-size: 10pt;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+p { margin: 0 0 4px; }
+p:last-child { margin-bottom: 0; }
+
+/* ---------- Skills ----------------------------------------------- */
+
+.skills > div { margin-bottom: 2px; }
+.skills .items { color: var(--ink-soft); }
+
+/* ---------- Entries (jobs, projects, education) ------------------- */
+
+.entry { margin-bottom: 6px; orphans: 2; widows: 2; }
+.entry:last-child { margin-bottom: 0; }
+
+.entry__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+.entry__title {
+  margin: 0;
+  font-size: 10pt;
+  font-weight: 700;
+}
+.entry__title .at { font-weight: 400; }
+
+.entry__when {
+  flex: 0 0 auto;
+  font-size: 8.6pt;
+  font-weight: 700;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.entry__meta {
+  margin: 1px 0 2px;
+  font-size: 8.6pt;
+  font-style: italic;
+  color: var(--ink-mute);
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+.entry__stack {
+  margin: 1px 0 2px;
+  font-size: 8.5pt;
+  color: var(--ink-mute);
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+ul { margin: 0; padding-left: 14px; }
+li { margin-bottom: 1px; orphans: 2; widows: 2; }
+li:last-child { margin-bottom: 0; }
+
+/* ---------- Tail lines ------------------------------------------- */
+
+.tail {
+  margin-top: 6px;
+  font-size: 8.6pt;
+  color: var(--ink-mute);
+}
+.tail b { color: var(--ink); }
+
+/* ---------- Print ------------------------------------------------- */
+
+@media print {
+  body { padding: 0; }
+  a { color: var(--ink); }
+  h2 { page-break-after: avoid; break-after: avoid; }
+  .masthead { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__id">
+    <h1>Abdullah Md Jahid Hassan</h1>
+    <p class="tagline">Software Engineer &mdash; Python &middot; Django &middot; API-based architectures &middot; MySQL &amp; PostgreSQL &middot; React &middot; AWS</p>
+    <p class="contact">
+      <span>Uttara 10, Dhaka, Bangladesh</span><span class="sep">|</span><span>+880&nbsp;1756&nbsp;254873</span><span class="sep">|</span><span><a href="mailto:abdullahmdjahidhassan@gmail.com">abdullahmdjahidhassan@gmail.com</a></span><br>
+      <span><a href="https://www.linkedin.com/in/abdullahmdjahidhassan/">linkedin.com/in/abdullahmdjahidhassan</a></span><span class="sep">|</span><span><a href="https://github.com/abdullah-md-jahid-hassan">github.com/abdullah-md-jahid-hassan</a></span><span class="sep">|</span><span><a href="https://github.com/orgs/omnyvora/repositories">github.com/orgs/omnyvora</a></span><br>
+      <span><b>Languages:</b> Bangla (native) &middot; English (professional) &middot; Hindi (conversational)</span>
+    </p>
+  </div>
+  <img class="masthead__photo" src="profile-photo.png" alt="Abdullah Md Jahid Hassan">
+</header>
+
+<section>
+  <h2>Professional Summary</h2>
+  <p><b>Python and Django</b> engineer who architects platforms rather than tickets. Promoted to <b>Senior Python Executive at Softvence Agency within eleven months</b> for delivering <b>eight production platforms</b> on <b>API-based architectures</b> &mdash; Django REST Framework on four, FastAPI on four &mdash; each owned from <b>MySQL</b> or PostgreSQL schema through REST API, containerisation, CI/CD and live <b>AWS</b> deployment. I have already done the thing a v2.0 rebuild asks for: designed a domain-driven platform architecture from a blank repository, migrated an existing codebase into a new one, and written the reusable foundation my company now starts every project from. Founder and sole engineer of <b>Omnyvora</b>, where I built the Django REST backend, the <b>React / Next.js</b> frontend and the design system alone. <b>B.Sc. in Computer Science &amp; Engineering</b>, IUBAT.</p>
+</section>
+
+<section>
+  <h2>Technical Skills</h2>
+  <div class="skills">
+    <div><b>Python &amp; Django:</b> <span class="items">Python 3 (primary) &middot; Django 5.2 &middot; Django REST Framework 3.16 &middot; FastAPI &middot; Django Channels / WebSockets &middot; Celery + Celery Beat &middot; SimpleJWT &middot; <code>django-allauth</code> / <code>dj-rest-auth</code> social login &middot; <code>django-filter</code> &middot; <code>django-storages</code> &middot; <code>drf-yasg</code> / Swagger / OpenAPI &middot; Gunicorn / Uvicorn</span></div>
+    <div><b>API-based architecture:</b> <span class="items">REST API design and versioning &middot; unified response envelope across every endpoint &middot; layered <code>models &rarr; selectors &rarr; services &rarr; serializers &rarr; views</code> separation &middot; domain-driven bounded contexts &middot; modular monolith designed for service extraction &middot; JWT with refresh rotation and blacklisting &middot; OAuth 2.0 / Google sign-in &middot; OTP verification &middot; role-based access control &middot; rate limiting &middot; idempotent webhooks</span></div>
+    <div><b>Databases:</b> <span class="items"><b>MySQL</b> &middot; PostgreSQL &middot; SQLite &middot; Redis 7 &middot; schema design and normalisation &middot; ER modelling &middot; SQL query optimisation &middot; indexing &middot; migrations &middot; Django ORM (<code>select_related</code>, <code>prefetch_related</code>, <code>bulk_update</code>, custom managers, soft delete) &middot; phpMyAdmin and pgAdmin</span></div>
+    <div><b>Frontend:</b> <span class="items"><b>React 19</b> &middot; <b>Next.js 16</b> (App Router) &middot; TypeScript 5 &middot; <b>HTML5</b> &middot; <b>CSS3</b> &middot; <b>JavaScript</b> (ES6) &middot; Tailwind CSS 4 &middot; shadcn/ui + Radix &middot; TanStack Query &middot; Zustand &middot; React Hook Form + Zod &middot; Bootstrap 5 &middot; UI/UX design, design systems and design tokens</span></div>
+    <div><b>Git &amp; GitHub:</b> <span class="items">Branching strategies &middot; pull-request workflows &middot; code review &middot; GitHub Actions CI/CD &middot; migration-drift gating &middot; 27 public repositories plus two organisation repositories</span></div>
+    <div><b>Cloud &amp; DevOps:</b> <span class="items"><b>AWS</b> EC2 (multi-region), IAM, S3, SES, RDS &middot; Hostinger VPS &middot; Cloudflare R2 &middot; Docker (multi-stage) &middot; Docker Compose &middot; Nginx &middot; Caddy &middot; Linux server administration &middot; Sentry &middot; structured logging and live health dashboards</span></div>
+    <div><b>Content &amp; learning platforms:</b> <span class="items">Article and category publishing with status workflows &middot; hierarchical document libraries with typed files &middot; training and event registration flows &middot; moderated forums with a moderation state machine and audit trail &middot; per-resource permission tables &middot; media upload, validation and S3 storage &middot; progress, streak and reward modelling</span></div>
+    <div><b>Process:</b> <span class="items">Requirement analysis &middot; functional and non-functional specification &middot; use case, activity and swimlane diagrams &middot; ERDs and data-flow diagrams &middot; function-point and cost estimation &middot; feasibility assessment &middot; risk assessment (RMMM) &middot; technical writing and developer documentation &middot; Claude Code and Cursor with committed architectural rule-sets</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Professional Experience</h2>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Senior Python Executive <span class="at">&mdash; Softvence Agency</span></p>
+      <span class="entry__when">Aug 2025 &ndash; Present</span>
+    </div>
+    <p class="entry__meta">Mohakhali, Dhaka &middot; Full-time, on-site &middot; Promoted from Junior Python Developer, Jul 2026</p>
+    <ul>
+      <li><b>Delivered eight production platforms in eleven months</b> &mdash; four on Django and Django REST Framework, four on FastAPI &mdash; owning each from data model and API design through Docker image, CI/CD pipeline and live deployment. Sole backend developer on several; lead on others.</li>
+      <li><b>Promoted from Junior Python Developer to Senior Python Executive within eleven months</b> on the strength of end-to-end ownership rather than tenure.</li>
+      <li><b>Wrote the reusable Django REST foundation the company now starts every project from</b> &mdash; JWT authentication, Redis-backed hashed OTP, async Celery email with retry backoff, in-app notifications, structured logging, a unified response envelope, a soft-delete base model, a health dashboard, Docker and CI/CD &mdash; cutting new-project setup from days to hours. Defining a platform's architecture once, so others build on it, is the work I am strongest at.</li>
+      <li><b>Migrated an existing backend into a new architecture</b> on a member-portal project, then extended it with feature-level access control granted per role and overridable per user &mdash; the exercise a v2.0 rebuild is made of.</li>
+      <li><b>Designed API-based architectures rather than endpoint collections</b> &mdash; strict layering where views never touch the ORM directly, versioned URL packages, a consistent response envelope covering 404s, 500s and validation failures alike, and OpenAPI documentation generated from the code.</li>
+      <li><b>Solved a real security problem by reading framework source rather than documentation:</b> Django REST Framework's default model-permission class skips the <code>view_&lt;model&gt;</code> check on safe methods, letting any authenticated user read any model. I wrote a subclass that enforces it and rolled it across projects.</li>
+      <li><b>Owned deployment on AWS personally</b> &mdash; EC2 across two regions with per-environment scoped IAM users, S3 media with explicit bucket policies, SES with DKIM and DMARC, deployed by GitHub Actions over SSH behind Nginx or Caddy.</li>
+      <li><b>Produced the documentation a team and a client both need</b> &mdash; requirement analysis from recorded calls, requirement tables and diagrams as versioned design documents, per-app developer guides, and a six-chapter plain-language operations handover for a non-technical owner.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Founder, Lead Engineer &amp; Designer <span class="at">&mdash; Omnyvora</span></p>
+      <span class="entry__when">Jun 2026 &ndash; Present</span>
+    </div>
+    <p class="entry__meta">Own organisation &middot; github.com/orgs/omnyvora &middot; Sole contributor across backend, frontend and design</p>
+    <ul>
+      <li><b>Took a product from a blank repository to a running platform alone</b> &mdash; a multi-tool SaaS (CV Builder, Portfolio Builder, Image Enhancer) on one identity, profile, notification and catalogue foundation, spanning 20 Django apps, a React frontend, a design system, Docker and CI/CD.</li>
+      <li><b>Architected four bounded domains with no cross-domain foreign keys</b> so any domain can be lifted into its own service without a rewrite &mdash; the decision that makes a v2 platform survive its own growth &mdash; documented in a 57&nbsp;KB API reference and per-app developer guides.</li>
+      <li><b>Built the full Next.js 16 / React 19 / TypeScript frontend</b> with feature-sliced architecture, TanStack Query, Zustand and drag-and-drop content management, plus a design system where each product re-themes itself by swapping two CSS custom properties.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Web Development Intern <span class="at">&mdash; Cyber Hundred</span></p>
+      <span class="entry__when">Feb 2024 &ndash; Jul 2024</span>
+    </div>
+    <p class="entry__meta">Khilkhet, Dhaka &middot; On-site &middot; Certificate issued Jun 2024</p>
+    <ul>
+      <li>Built frontend and backend features in HTML5, CSS, Bootstrap, PHP and MySQL across multiple client web projects; managed databases and optimised queries through phpMyAdmin; used Git and GitHub for collaborative development.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Selected Projects</h2>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">ArchiCoPro &mdash; Members' Learning &amp; Content Portal <span class="at">&middot; lead backend developer</span></p>
+      <span class="entry__when">Jun 2026 &ndash; Jul 2026</span>
+    </div>
+    <p class="entry__stack">archicopro.cloud &middot; Python &middot; FastAPI &middot; PostgreSQL &middot; Redis &middot; Celery &middot; Docker Compose &middot; Caddy</p>
+    <ul>
+      <li><b>Lead backend developer on the closest thing to an eLearning platform I have built</b> &mdash; trainings with format and status enums and registration flows, articles with a publication-status workflow, a hierarchical document library with typed files, events with registrations, and moderated forums with a moderation state machine and audit trail.</li>
+      <li><b>Built feature-level access control that grants at the role level and overrides per user</b>, with per-content-type permission tables so visibility is enforced per resource rather than per endpoint &mdash; plus admin-editable mail configuration and a scheduled backup system so the organisation can self-manage its own platform.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">ProspectLead &mdash; AI SaaS Platform <span class="at">&middot; lead backend developer and UI/UX designer</span></p>
+      <span class="entry__when">Jan 2026 &ndash; Jul 2026</span>
+    </div>
+    <p class="entry__stack">prospectlead.ai &middot; Django &middot; Django REST Framework &middot; PostgreSQL &middot; Redis &middot; Celery &middot; Stripe &middot; OpenAI &middot; Docker</p>
+    <ul>
+      <li><b>Owned architecture, billing, the pipeline and observability</b> across eleven Django apps &mdash; largest share of commits. Two-step OTP email registration plus Google sign-in, an append-only credit ledger that cannot be overspent by concurrent jobs, and idempotent Stripe webhook processing.</li>
+      <li><b>Designed the product's landing page, dashboard and auth screens</b> and wrote the specification document the whole team worked from &mdash; the product-shaping half of the job, not just the implementation half.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">LookUp &mdash; AI Building-Recognition &amp; Gamified Tour App <span class="at">&middot; sole backend developer</span></p>
+      <span class="entry__when">Apr 2026</span>
+    </div>
+    <p class="entry__stack">Django &middot; Django REST Framework &middot; PostgreSQL &middot; Google social login &middot; AWS S3 &middot; Docker &middot; GitHub Actions</p>
+    <ul>
+      <li><b>Sole backend developer</b> on a mobile-first app with a complete <b>gamification economy</b> &mdash; ordered experience-point levels with rewards, badge unlocks at bronze/silver/gold thresholds, daily streak tracking and a search-history model &mdash; translated from a product-designed spreadsheet into a constraint-enforced database schema. The same mechanics a learning platform uses to keep students returning.</li>
+    </ul>
+  </div>
+
+  <p class="tail"><b>Also delivered</b> &mdash; <b>CHYR</b>, multi-tenant AI voice-receptionist SaaS across 13 Django apps &middot; <b>Tundra</b> (thundra.de, three-service Django + FastAPI + Next.js e-commerce estate) &middot; <b>OCReels</b> (ocreels.com, async FastAPI short-video platform) &middot; <b><code>django_templet</code></b>, my own open reusable Django REST starter &middot; <b>Internet Service Provider System</b>, my university practicum in PHP/MySQL.</p>
+</section>
+
+<section>
+  <h2>Education &amp; Certifications</h2>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">B.Sc. in Computer Science &amp; Engineering</p>
+      <span class="entry__when">May 2020 &ndash; Jun 2024</span>
+    </div>
+    <p class="entry__meta">IUBAT &mdash; International University of Business Agriculture and Technology, Dhaka &middot; CGPA 3.59 / 4.00 &middot; Degree certificate issued 30 May 2024</p>
+    <ul>
+      <li><b>Thesis:</b> <i>Implementation of Parallel Data Transmission in Li-Fi Technology Using RGB Light</i>. <b>Practicum:</b> <i>Development of an Internet Service Provider System</i>. <b>Coursework:</b> Data Structures &amp; Algorithms &middot; DBMS &middot; Software Engineering &middot; Operating Systems &middot; Computer Networks.</li>
+    </ul>
+  </div>
+
+  <p class="tail"><b>Python-Django</b> &mdash; EDGE, Enhancing Digital Government and Economy (Bangladesh Government ICT programme) &middot; Jul 2025 &nbsp;&middot;&nbsp; <b>Internship Certificate</b> &mdash; Cyber Hundred &middot; Jun 2024 &nbsp;&middot;&nbsp; References available on request.</p>
+</section>
+
+</body>
+</html>
