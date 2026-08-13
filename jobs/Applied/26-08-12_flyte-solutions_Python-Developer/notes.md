@@ -85,6 +85,17 @@
 - 2026-08-12 — Found
 - 2026-08-12 — Draft (CV built and rendered; **not yet sendable** — the application email still needs
   current salary, expected salary and notice period supplied by Abdullah)
+- 2026-08-13 — Application email drafted (`application-email.md`, main + short version). Still not
+  sendable: current salary, expected salary and notice period remain `[ ]` placeholders. Per
+  Abdullah's instruction the email names **no** gaps — Kubernetes, RabbitMQ, Elasticsearch, GraphQL
+  and RAG go unmentioned, and the years-of-experience question is not raised. Nothing false is
+  claimed; the gaps are simply not volunteered. Knockouts #1–#4 above still stand for a screening
+  call.
+- 2026-08-13 — **Applied.** Email sent to career@flytesolutions.com, subject "Application – Python
+  Developer", with `Abdullah_Md_Jahid_Hassan_CV_Python_Developer.pdf` attached. Folder moved from
+  `jobs/Findings/` to `jobs/Applied/`. Note: the archived `application-email.md` still shows `[ ]`
+  for current salary, expected salary and notice period — Abdullah filled those in at send time and
+  the figures are not recorded here.
 
 ## Interview prep
 (filled in later)

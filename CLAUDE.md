@@ -91,6 +91,34 @@ If I say I've applied, heard back, been rejected, or been invited to interview �
 `Found` and `Draft` live in `Findings/`; everything from `Applied` onward lives in `Applied/`;
 `Archived` lives in `Archived/`.
 
+### "Mark it as <status>" always means all three things
+
+**When I tell you to mark a job as applied — or as archived, rejected, interview, or any other
+status — that one sentence is an instruction to do three things, not one.** Never do only the part I
+named out loud. Never ask which of the three I meant. Do all three, in this order, then tell me what
+moved:
+
+| # | Do this | Where |
+|---|---|---|
+| **1** | Set `status` to the new value **and** set `updated` to today's date | the job's row in `jobs/jobs_log.csv` |
+| **2** | Append a dated line to the status timeline | that folder's `notes.md` |
+| **3** | **Move the folder** to the directory that status belongs in — `git mv`, move never copy, folder name unchanged — then fix `folder_local_location` in the CSV to match | `jobs/Findings/` → `jobs/Applied/` → `jobs/Archived/` |
+
+**Which folder each status lives in:**
+
+| Status | Folder |
+|---|---|
+| `Found` · `Draft` | `jobs/Findings/` |
+| `Applied` · `Screening` · `Task/Test` · `Interview` · `Final` · `Offer` · `Rejected` · `No response` | `jobs/Applied/` |
+| `Archived` · `Withdrawn` | `jobs/Archived/` |
+
+**Notes on step 3:** a status change inside the same folder (`Applied` → `Interview` → `Rejected`)
+needs no move — steps 1 and 2 still both run. A job that reaches `Rejected` or `No response` **stays
+in `Applied/`**; it is history of an application that was actually sent, and it does not move to
+`Archived/`. `Archived/` is only ever for jobs that died *before* an application went out, plus
+`Withdrawn`. `folder_local_location` in the CSV must always match where the folder actually is —
+if you moved it and didn't update that column, the job is lost.
+
 ### When a job dies before I apply
 
 **Archive it — never delete it.** If the deadline expires while it sits in `Findings/`, or a knockout
