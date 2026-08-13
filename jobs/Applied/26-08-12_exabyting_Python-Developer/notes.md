@@ -7,7 +7,7 @@
 | Field | Value |
 |---|---|
 | Found | 2026-08-12 |
-| Applied | (blank until submitted) |
+| Applied | 2026-08-13 (via career-life.exabyting.com/candidate-form) |
 | Source | LinkedIn (pasted directly by Abdullah) |
 | Location / type | Dhaka, Bangladesh (Mohakhali DOHS) · on-site, inferred from company address + perks, not stated in posting |
 | Deadline | Not stated |
@@ -70,6 +70,61 @@
 ## Status timeline
 - 2026-08-12 — Found
 - 2026-08-12 — Draft (CV built and rendered)
+- 2026-08-13 — **Applied.** Submitted through the Exabyting candidate form
+  (`career-life.exabyting.com/candidate-form`). Folder moved `Findings/` → `Applied/`.
+
+## Application form — free-text answers submitted
+
+The candidate form asked open questions beyond the CV. Answers written on 2026-08-13, all traced to
+`PROFILE.md`; recorded here because these are what an interviewer will follow up on.
+
+**Q1 — "Why are you considering a change right now?"**
+
+> I have spent the past year at Softvence Agency building client backends, eight of them in eleven
+> months, which is how I moved from Junior Python Developer to Senior Python Executive. It has been a
+> fast way to learn, but agency work follows a pattern: you design a system, ship it, hand it over,
+> and start the next one. I want to stay with a product long enough to see it live in production,
+> understand how it behaves under real usage, and keep improving it instead of leaving at handover.
+>
+> Exabyting stands out because the work described in the posting is what I already do every day:
+> Django and FastAPI, asynchronous and event-driven services, Redis, Docker and AWS. I am also
+> looking for a team with more backend engineers around me. On most of my projects I have been the
+> only backend developer, and I know I grow faster when someone is reviewing my design decisions.
+> That combination is what makes this the right time to move.
+
+*Angle taken:* no criticism of Softvence (the handover point is framed as a property of the agency
+model, not a complaint); the Junior → Senior promotion is placed early so it lands before anyone does
+the date arithmetic against the JD's "2+ years" (Knockout #1).
+
+**Q2 — "Describe one system or feature you personally built recently in 3 lines."**
+
+> I built the credit-billing engine for ProspectLead, an AI lead-generation SaaS on Django REST,
+> where I was the lead backend developer.
+> Credits are reserved the moment a job is dispatched so concurrent requests cannot overspend, then
+> finalised when the n8n automation posts back on an authenticated webhook, with the difference
+> refunded automatically if fewer leads are returned than were paid for.
+> Every movement is written to an append-only ledger with a running balance, Stripe webhooks are
+> processed idempotently against a unique event ID, and a Celery Beat watchdog auto-fails and refunds
+> any job that has no callback after six hours.
+
+*Why this project:* the JD makes Django the hard requirement and FastAPI only "preferred", so the
+Django answer leads. It also covers their asynchronous/event-driven, Redis and cloud bullets in one
+example. Source: `PROFILE.md` §7.3. A FastAPI alternative (OCReels async architecture, §7.2) was
+prepared but not used.
 
 ## Interview prep
-(filled in later)
+
+**Follow-ups the submitted answers invite — prepare these first:**
+
+1. **"What if the n8n callback arrives twice?"** — the idempotency key on the webhook event table
+   plus the reserved-state check on the `LeadGenerationRequest` state machine. Q2 points an
+   interviewer straight here.
+2. **"You said 2+ years; you have about one."** — do not pad. ~1 year professional Python/Django at
+   Softvence (from 16 Aug 2025), preceded by a PHP/MySQL internship (Feb–Jul 2024) and ~1.5 years of
+   self-directed Python work. The promotion in eleven months is the counterweight. See Knockout #1.
+3. **"Which NoSQL databases have you used?"** — Redis, genuinely and in production (cache, Celery
+   broker, OTP store, Channels layer). No MongoDB or other document store. Say so plainly. See
+   Knockout #2.
+4. **"Why leave after only a year?"** — consistent with the Q1 answer: wanting to own a product past
+   handover, and wanting backend peers to review design decisions. Avoid any framing that reads as
+   dissatisfaction with pay or management.
