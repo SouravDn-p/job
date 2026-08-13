@@ -1,0 +1,17 @@
+name: Dummy Branch Trigger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  dummy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Start
+        run: echo "GitHub Action triggered."
+
+      - name: Done
+        run: echo "Nothing to do. Exiting successfully."
