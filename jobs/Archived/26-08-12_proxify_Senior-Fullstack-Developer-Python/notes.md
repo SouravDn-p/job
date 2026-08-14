@@ -1,5 +1,21 @@
 # Notes — Senior Fullstack Developer (Python), Proxify AB
 
+> 🔴 **ARCHIVED 2026-08-14 — decided against, never applied to.**
+> Abdullah chose not to pursue this role. No CV was built and nothing was submitted.
+> The deadline (2026-08-16) was still live at the time of archiving, so this did **not**
+> die of expiry — it was a deliberate decision to skip.
+>
+> **Context worth keeping:** the role is a *fullstack* opening at a vetted talent network
+> where the frontend half carries real weight (React.js or Vue.js, "polished, performant
+> user interfaces"). Frontend is the weakest part of the profile — React exposure exists
+> only through Omnyvora, and Vue.js not at all. A separate **Backend Developer** role at
+> the same network was already applied to on 2026-08-04
+> (`jobs/Applied/26-08-03_proxify_Senior-Backend-Developer-Python`), which is the better-fitting
+> shape of the same opportunity.
+>
+> **Generalise this:** at Proxify specifically, prefer backend-titled openings over
+> fullstack-titled ones. Do not surface this posting again.
+
 ## Priority tier
 **Tier 1 — Remote, global.** "Anywhere in the World," no timezone restriction stated in any of the compiled sources.
 
@@ -18,3 +34,4 @@
 
 ## Timeline
 - **2026-08-12 — Found.** Surfaced during a full remote/government/on-site sweep. Logged as Tier 1, deadline-urgent. No CV built yet.
+- **2026-08-14 — Archived.** Decided against; not applied to. CV build was started (profile and precedent CVs read) but stopped before any `cv.html` was written, so no CV exists in this folder. Deadline 2026-08-16 was still two days live — the role was skipped by choice, not lost to the clock. Folder moved `Findings/` → `Archived/`.
