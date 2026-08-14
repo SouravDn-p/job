@@ -12,7 +12,7 @@ eyes open — see the fit table below.
 | Field | Value |
 |---|---|
 | Found | 2026-08-12 |
-| Applied | (blank until submitted) |
+| Applied | **2026-08-14** — one day inside the 2026-08-15 deadline |
 | Source | LinkedIn (pasted by Abdullah) |
 | Location / type | Bashundhara R/A, Dhaka · on-site |
 | Deadline | **2026-08-15 — 3 days from Found date. Stated and live: admits the role directly regardless of posting age (`CLAUDE.md` § Deadline first, rule 2).** |
@@ -76,6 +76,7 @@ eyes open — see the fit table below.
 ## Status timeline
 - 2026-08-12 — Found
 - 2026-08-12 — Draft (CV built and rendered; long-shot flagged and accepted by Abdullah before build)
+- **2026-08-14 — Applied.** Submitted via the Google Form (forms.gle/cTyAsQuGuMe1oLav9) with `Abdullah_Md_Jahid_Hassan_CV_Full_Stack_Developer.pdf`. One day ahead of the 2026-08-15 deadline. Folder moved `Findings/` → `Applied/`; `cv.html` is now immutable — any revision for Walton means a new dated folder, not an edit to this one.
 
 ## Interview prep
 (filled in later)
