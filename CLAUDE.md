@@ -72,7 +72,7 @@ This folder is **Abdullah Md Jahid Hassan's** CV/job-application workspace. Its 
 
 1. Work in the job's existing `jobs/Findings/` folder if it has one; otherwise create the folder directly under `jobs/Applied/`.
 2. Write into it:
-   - `cv.html` — the exact CV produced (this is what gets sent; it must stay immutable once applied). **HTML is the format**, because I render it to PDF with my own HTML→CV builder. Standalone file, inline `<style>`, `@page { size: A4 }`, single column, semantic tags, no layout tables, no text inside images. Copy any image it references into the folder so it stays self-contained. Verify the page count by rendering it — do not estimate. **One CV file per folder:** never leave a `cv.md` beside a `cv.html`, since two divergent copies destroy the "which CV did they see?" answer.
+   - `cv.html` — the exact CV produced (this is what gets sent; it must stay immutable once applied). **HTML is the format**, because I render it to PDF with my own HTML→CV builder. Standalone file, inline `<style>`, `@page { size: A4 }`, single column, semantic tags, no layout tables, no text inside images. **All body copy is justified** — see "Justify the body copy" below. Copy any image it references into the folder so it stays self-contained. Verify the page count by rendering it — do not estimate. **One CV file per folder:** never leave a `cv.md` beside a `cv.html`, since two divergent copies destroy the "which CV did they see?" answer.
    - `job-description.md` — as above, if not already there.
    - `notes.md` — which summary variant was used, which projects were featured, which JD keywords were targeted, what was deliberately omitted, and a dated status timeline.
 3. Append or update the job's row in `jobs/jobs_log.csv`.
@@ -242,6 +242,23 @@ Pick 3–5 projects using each project's "Best for JDs about…" tag; do not dum
 **Content decides page count; page count never decides content.** The one-page rule is not evidence-based — in a blind study of 482 recruiters, two-page CVs were preferred 1.4× at entry level and 2.6× at mid-level. **Two pages is the normal target for me**; one page when the JD-relevant material is genuinely thin; **never three** for an engineering role.
 
 Verify the page count by rendering, never by estimating. Every page before the last must be ≥90% full and the last ≥75% — a half-empty page 2 reads as padding and is worse than a tight single page.
+
+### Justify the body copy
+
+**Every CV you build has its body copy justified — `text-align: justify`. This is not optional and not per-CV; it applies to every build, every session.** It gives the page a clean right edge, which is the look I want.
+
+Apply it to **running text only** — the summary paragraph, skill rows, bullet list items and tail paragraphs:
+
+```css
+p, li { text-align: justify; text-justify: inter-word; }
+```
+
+**Keep these left-aligned**, because justifying a short single line just stretches it into something that looks broken: the name and section headings (`h1`, `h2`), the tagline and contact block, entry titles, the right-hand date column, and the italic meta/stack lines under a job or project title.
+
+Two consequences worth knowing:
+
+- **Justification changes line breaks, so it changes the page count.** Set it *before* the first render, not after the layout is already tuned — otherwise the fill test has to be re-run from scratch.
+- **Don't add `hyphens: auto` to compensate.** It hyphenates technical terms mid-word (`Postgre-SQL`, `contain-erisation`), which reads worse than the occasional wide word-space.
 
 ### Two things to always tell me
 

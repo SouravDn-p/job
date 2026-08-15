@@ -175,6 +175,7 @@ Three passes, one per gate. Verify every line.
 - [ ] Standard section headings (`Professional Summary`, `Work Experience`, `Skills`, `Projects`, `Education`, `Certifications`) — no creative names
 - [ ] All dates as `Mon YYYY – Mon YYYY` (e.g. `Aug 2025 – Present`). Not numeric, not `January 2023 to March 2025`, not seasons or quarters
 - [ ] Standard font, body 10–12pt; bullets are `•` or `-` only
+- [ ] **Body copy is justified** (`p, li { text-align: justify }`); headings, contact block, entry titles, date column and meta/stack lines stay left-aligned. House rule — see `CLAUDE.md` § Justify the body copy. Set it before the first render, since it changes line breaks and therefore the page count
 - [ ] No information carried by an icon, graphic, or skill bar
 - [ ] Exported PDF has selectable text (verify after rendering — see Step 5b)
 
@@ -208,7 +209,7 @@ Three passes, one per gate. Verify every line.
 
 Write three files:
 
-**`cv.html`** — the finished CV, in **HTML** (rendered to PDF in step 5b). This is what gets sent, so it must be complete and standalone: inline `<style>`, `@page { size: A4 }`, single column, semantic `<h1>/<h2>/<section>/<ul>`, DOM order matching reading order, no layout tables, no text baked into images, nothing in a running header or footer. Copy any referenced image into the folder and link it by relative path.
+**`cv.html`** — the finished CV, in **HTML** (rendered to PDF in step 5b). This is what gets sent, so it must be complete and standalone: inline `<style>`, `@page { size: A4 }`, single column, semantic `<h1>/<h2>/<section>/<ul>`, DOM order matching reading order, no layout tables, no text baked into images, nothing in a running header or footer. **Body copy justified** (`p, li { text-align: justify }`), headings/contact/titles/dates/meta lines left-aligned — house rule, `CLAUDE.md` § Justify the body copy. Copy any referenced image into the folder and link it by relative path.
 
 **Verify the page count by actually rendering it** — never estimate. Headless Edge works:
 `& "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf="out.pdf" "file:///C:/.../cv.html"`
