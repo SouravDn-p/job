@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdullah Md Jahid Hassan — Backend Software Engineer (Python / FastAPI)</title>
+<style>
+/* ============================================================
+   Abdullah Md Jahid Hassan — CV
+   Target role : Mid Software Engineer — Backend (Python / FastAPI)
+                 Foodi (Baridhara, Dhaka) — HRIS platform
+   Tier        : 3 — on-site, Dhaka
+   Layout ref  : Assets/CV Templates/cv_temp_1.png
+                 single column - left-aligned rules - photo top-right
+                 (same skeleton as the Exabyting/Flyte builds)
+
+   The JD leads with FastAPI + Python, then HRIS modules, PostgreSQL
+   data modelling, REST + JWT/OAuth2, Docker/Git/pytest, and background
+   jobs. Summary, skills and bullets are ordered to answer them in the
+   JD's own order, and FastAPI is put ahead of Django throughout —
+   the reverse of the Exabyting build, because this JD is FastAPI-first.
+
+   Honesty notes (CLAUDE.md hard rule 1):
+   - SQLAlchemy is NOT claimed. The JD asks for it; the profile's async
+     ORM is Tortoise ORM + Aerich, which is named plainly instead. No
+     substitution, no "ORM experience" hand-waving that implies it.
+   - gRPC / Protocol Buffers are absent from the profile and appear
+     nowhere on this CV, not even softened.
+   - No HR/Payroll domain experience exists. SaaS and multi-tenant
+     org/role/invitation modelling are offered as the honest adjacency
+     and are described as what they are.
+   - The "2-4 years" gate is not papered over: dates are printed exactly
+     (Aug 2025 for Softvence, Feb-Jul 2024 internship). No total is
+     stated anywhere. The counterweight is the promotion and delivery
+     volume, which are both real.
+   - The JD's own "quick learner ... eager to adopt evolving
+     technologies" line is answered with the documented PHP -> Django ->
+     FastAPI trajectory, which is evidence, not a claim about character.
+
+   Built against the three-gate model in
+   .claude/skills/cv-builder/references/ats-and-hiring-manager.md
+   ============================================================ */
+
+@page { size: A4; margin: 9mm 12mm; }
+
+:root {
+  --ink:        #111111;
+  --ink-soft:   #3d3d3d;
+  --ink-mute:   #5f5f5f;
+  --rule:       #111111;
+  --rule-light: #cfcfcf;
+  --link:       #1a3f6b;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0 auto;
+  padding: 20px 22px 24px;
+  max-width: 210mm;
+  font-family: Arial, "Helvetica Neue", Helvetica, "Liberation Sans", sans-serif;
+  font-size: 9pt;
+  line-height: 1.21;
+  color: var(--ink);
+  background: #ffffff;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  font-family: "Consolas", "DejaVu Sans Mono", monospace;
+  font-size: .94em;
+}
+
+/* ---------- Header ------------------------------------------------ */
+
+.masthead {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 7px;
+  border-bottom: 2.5px solid var(--rule);
+}
+
+.masthead__id { flex: 1 1 auto; min-width: 0; }
+
+h1 {
+  margin: 0 0 2px;
+  font-size: 20pt;
+  line-height: 1.06;
+  font-weight: 700;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin: 0 0 5px;
+  font-size: 10.2pt;
+  color: var(--ink-soft);
+  letter-spacing: .2px;
+}
+
+.contact {
+  margin: 0;
+  font-size: 8.7pt;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.contact span { white-space: nowrap; }
+.contact .sep { color: var(--rule-light); padding: 0 3px; }
+
+.masthead__photo {
+  flex: 0 0 auto;
+  width: 23mm;
+  height: 28.75mm;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid var(--rule-light);
+}
+
+/* ---------- Sections --------------------------------------------- */
+
+section { margin-top: 8px; }
+
+h2 {
+  margin: 0 0 5px;
+  padding-bottom: 2px;
+  border-bottom: 1.4px solid var(--rule);
+  font-size: 10pt;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+p { margin: 0 0 4px; }
+p:last-child { margin-bottom: 0; }
+
+/* ---------- Justification ----------------------------------------
+   House rule (CLAUDE.md § How to behave when building a CV): all body
+   copy on a CV is justified. Applied to running text only — headings,
+   the contact block, entry titles and date columns stay left-aligned,
+   because justifying a short single line just stretches it. */
+
+p, li { text-align: justify; text-justify: inter-word; }
+
+h1, h2,
+.tagline, .contact,
+.entry__head, .entry__title, .entry__when,
+.entry__meta, .entry__stack { text-align: left; }
+
+/* ---------- Skills ----------------------------------------------- */
+
+.skills > div { margin-bottom: 2px; }
+.skills .items { color: var(--ink-soft); }
+
+/* ---------- Entries (jobs, projects, education) ------------------- */
+
+.entry { margin-bottom: 6px; orphans: 2; widows: 2; }
+.entry:last-child { margin-bottom: 0; }
+
+.entry__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+.entry__title {
+  margin: 0;
+  font-size: 10pt;
+  font-weight: 700;
+}
+.entry__title .at { font-weight: 400; }
+
+.entry__when {
+  flex: 0 0 auto;
+  font-size: 8.6pt;
+  font-weight: 700;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.entry__meta {
+  margin: 1px 0 2px;
+  font-size: 8.6pt;
+  font-style: italic;
+  color: var(--ink-mute);
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+.entry__stack {
+  margin: 1px 0 2px;
+  font-size: 8.5pt;
+  color: var(--ink-mute);
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+ul { margin: 0; padding-left: 14px; }
+li { margin-bottom: 1px; orphans: 2; widows: 2; }
+li:last-child { margin-bottom: 0; }
+
+/* ---------- Tail lines ------------------------------------------- */
+
+.tail {
+  margin-top: 6px;
+  font-size: 8.6pt;
+  color: var(--ink-mute);
+}
+.tail b { color: var(--ink); }
+
+/* ---------- Print ------------------------------------------------- */
+
+@media print {
+  body { padding: 0; }
+  a { color: var(--ink); }
+  h2 { page-break-after: avoid; break-after: avoid; }
+  .masthead { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__id">
+    <h1>Abdullah Md Jahid Hassan</h1>
+    <p class="tagline">Backend Software Engineer &mdash; Python &middot; FastAPI &middot; REST APIs &middot; PostgreSQL &middot; Docker</p>
+    <p class="contact">
+      <span>Uttara 10, Dhaka, Bangladesh</span><span class="sep">|</span><span>+880&nbsp;1756&nbsp;254873</span><span class="sep">|</span><span><a href="mailto:abdullahmdjahidhassan@gmail.com">abdullahmdjahidhassan@gmail.com</a></span><br>
+      <span><a href="https://www.linkedin.com/in/abdullahmdjahidhassan/">linkedin.com/in/abdullahmdjahidhassan</a></span><span class="sep">|</span><span><a href="https://github.com/abdullah-md-jahid-hassan">github.com/abdullah-md-jahid-hassan</a></span><span class="sep">|</span><span><a href="https://github.com/orgs/omnyvora/repositories">github.com/orgs/omnyvora</a></span><br>
+      <span><b>Languages:</b> Bangla (native) &middot; English (professional) &middot; Hindi (conversational)</span>
+    </p>
+  </div>
+  <img class="masthead__photo" src="profile-photo.png" alt="Abdullah Md Jahid Hassan">
+</header>
+
+<section>
+  <h2>Professional Summary</h2>
+  <p>Backend engineer who builds and maintains <b>backend services and REST APIs using FastAPI and Python</b> &mdash; four production FastAPI services and four on Django REST Framework, delivered across eleven months. Currently <b>Senior Python Executive at Softvence Agency</b>, promoted from Junior Python Developer within eleven months on end-to-end delivery rather than tenure. Day-to-day work is the shape this role describes: <b>Pydantic</b> schemas over <b>async</b> Python, <b>PostgreSQL</b> data models and efficient queries, <b>REST API design with JWT/OAuth2 authentication</b>, <b>background jobs</b> on Celery and Celery Beat, and <b>API integrations</b> with Stripe, OpenAI, Twilio, Firebase and n8n. Owns each service through to production &mdash; <b>Docker</b>, <b>Git</b>, <b>pytest</b>, GitHub Actions CI/CD and deployment on AWS EC2. A fast, self-directed learner by record rather than by claim: moved from PHP/MySQL to production Django inside a year, then picked up FastAPI and shipped four services on it.</p>
+</section>
+
+<section>
+  <h2>Technical Skills</h2>
+  <div class="skills">
+    <div><b>Python &amp; FastAPI:</b> <span class="items">Python 3.11&ndash;3.13 (primary) &middot; <b>FastAPI 0.119</b> &middot; <b>Pydantic v2</b> + pydantic-settings &middot; <b>async</b>/<code>await</code>, asyncio, async application-factory and <code>lifespan</code> patterns &middot; Uvicorn &middot; async ORM: <b>Tortoise ORM 0.25 + Aerich migrations</b> &middot; async drivers (asyncpg, aiomysql) &middot; <code>python-socketio</code> &middot; APScheduler</span></div>
+    <div><b>Django &amp; Django REST Framework:</b> <span class="items">Django 5.2 &middot; Django REST Framework 3.16 &middot; SimpleJWT &middot; <code>django-allauth</code> / <code>dj-rest-auth</code> &middot; <code>django-filter</code> &middot; <code>django-storages</code> &middot; Django Channels (WebSockets) &middot; Gunicorn</span></div>
+    <div><b>PostgreSQL &amp; data modelling:</b> <span class="items"><b>PostgreSQL</b> (primary; psycopg3, asyncpg) &middot; MySQL &middot; SQLite &middot; schema design, normalisation and ER modelling &middot; <b>efficient queries</b> &mdash; composite indexing, <code>select_related</code>/<code>prefetch_related</code>, N+1 elimination, <code>bulk_update</code> over per-row saves &middot; database constraints and custom managers &middot; migrations and migration-drift gating</span></div>
+    <div><b>REST APIs &amp; authentication:</b> <span class="items"><b>REST API design</b> and versioning &middot; <b>JWT</b> (SimpleJWT, python-jose, PyJWT) with refresh-token rotation and blacklisting &middot; <b>OAuth2</b> / Google OAuth 2.0 &middot; TOTP two-factor via <code>pyotp</code> &middot; RBAC and permission groups &middot; rate limiting and throttling &middot; unified response envelope &middot; Swagger / OpenAPI via <code>drf-yasg</code></span></div>
+    <div><b>Background jobs &amp; caching:</b> <span class="items"><b>Celery 5 + Celery Beat</b> with isolated queue routing &middot; <b>Redis 7</b> as cache, task broker, OTP store and WebSocket channel layer &middot; scheduled and cron-driven jobs &middot; idempotent webhook processing &middot; retry, watchdog and dunning state machines</span></div>
+    <div><b>Docker, Git &amp; testing:</b> <span class="items"><b>Docker</b> (multi-stage builds) &middot; Docker Compose &middot; <b>Git</b> / GitHub (branching, pull-request workflows, <b>code review</b>) &middot; <b>pytest</b> + pytest-asyncio &middot; Django <code>TestCase</code> &middot; Bruno and Postman collections &middot; Locust &middot; Sentry &middot; GitHub Actions CI/CD &middot; AWS EC2, IAM, S3 &middot; Nginx &middot; Caddy &middot; Linux</span></div>
+    <div><b>API integrations:</b> <span class="items">Stripe (subscriptions, invoices, webhooks) &middot; Tap Payments &middot; OpenAI &middot; ElevenLabs &middot; Twilio &middot; <b>Firebase Cloud Messaging</b> (push notifications) &middot; Cal.com &middot; Google Calendar &middot; n8n &middot; AWS SES / SMTP</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Professional Experience</h2>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Senior Python Executive <span class="at">&mdash; Softvence Agency</span></p>
+      <span class="entry__when">Aug 2025 &ndash; Present</span>
+    </div>
+    <p class="entry__meta">Mohakhali, Dhaka &middot; Full-time, on-site &middot; Promoted from Junior Python Developer, Jul 2026</p>
+    <ul>
+      <li><b>Developed and maintained eight production backend services and their REST APIs</b> in eleven months &mdash; <b>four on FastAPI</b> and four on Django REST Framework &mdash; each owned end to end from data model through API, containerisation and live deployment.</li>
+      <li><b>Promoted from Junior Python Developer to Senior Python Executive within eleven months</b> on the strength of end-to-end ownership rather than tenure.</li>
+      <li><b>Own well-defined modules end to end on shared codebases</b> &mdash; on a three-engineer team I held the authentication, subscription, OTP, notification and logging domains while colleagues held theirs, integrating through reviewed interfaces.</li>
+      <li><b>Design PostgreSQL data models and write the queries that read them efficiently</b> &mdash; normalised schemas with database-level uniqueness constraints and composite indexes on every query path, N+1 elimination via <code>select_related</code>/<code>prefetch_related</code>, and bulk writes in place of per-row saves.</li>
+      <li><b>Build background jobs as first-class infrastructure</b> &mdash; Celery and Celery Beat queues with explicit, isolated routing keys so slow jobs cannot block business tasks, plus scheduled watchdogs, renewal tasks and retry state machines backed by Redis.</li>
+      <li><b>Contribute to API integrations end to end</b> &mdash; Stripe, Tap Payments, OpenAI, ElevenLabs, Twilio, Cal.com, Firebase Cloud Messaging and n8n, each behind an idempotent webhook or authenticated callback contract so replays and retries are safe.</li>
+      <li><b>Participate in code reviews, testing and debugging</b> &mdash; pull-request review on shared repositories, <code>pytest</code> and Django <code>TestCase</code> suites, Bruno and Postman collections for API regression, and a CI pipeline that gates on migration drift and runs the test suite inside the built image rather than beside it.</li>
+      <li><b>Collaborate with frontend, QA and product</b> &mdash; separate frontend teams on most projects, with requirement analysis taken directly from client calls and briefs and returned as versioned specifications, API contract documentation and per-app developer guides.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Founder, Lead Engineer &amp; Designer <span class="at">&mdash; Omnyvora</span></p>
+      <span class="entry__when">Jun 2026 &ndash; Present</span>
+    </div>
+    <p class="entry__meta">Own organisation &middot; github.com/orgs/omnyvora &middot; Sole contributor</p>
+    <ul>
+      <li><b>Took a multi-tool SaaS platform from a blank repository to a running stack alone</b> &mdash; a Django REST modular monolith across four bounded domains with strict <code>models &rarr; selectors &rarr; services &rarr; serializers &rarr; views</code> layering, so views never touch the ORM directly and each module stays independently testable.</li>
+      <li><b>Modelled normalised personnel records</b> &mdash; profiles, skills, experience, education and certifications &mdash; with validated fields, ownership checks that reject a whole payload if any record is not the caller's, and reordering served by a single <code>bulk_update</code> rather than per-row saves.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Web Development Intern <span class="at">&mdash; Cyber Hundred</span></p>
+      <span class="entry__when">Feb 2024 &ndash; Jul 2024</span>
+    </div>
+    <p class="entry__meta">Khilkhet, Dhaka &middot; On-site &middot; Certificate issued Jun 2024</p>
+    <ul>
+      <li>Built frontend and backend features in HTML5, CSS, Bootstrap, PHP and MySQL across multiple client web projects; managed databases through phpMyAdmin; used Git and GitHub for collaborative development.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Selected Projects</h2>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">OCReels &mdash; Async FastAPI Media Platform <span class="at">&middot; backend developer</span></p>
+      <span class="entry__when">Jun 2026 &ndash; Jul 2026</span>
+    </div>
+    <p class="entry__stack">ocreels.com &middot; FastAPI 0.119 &middot; Pydantic v2 &middot; Tortoise ORM + Aerich &middot; PostgreSQL (asyncpg) &middot; Redis &middot; Celery &middot; pytest-asyncio &middot; Docker &middot; AWS EC2</p>
+    <ul>
+      <li><b>Built on a fully asynchronous, auto-discovering FastAPI architecture</b> &mdash; an application factory with an async <code>lifespan</code> hook that initialises database, Redis, scheduler and permission sync, then dynamically registers routes and auto-imports each module's signals, so adding a domain needs no change to <code>main.py</code>.</li>
+      <li><b>Implemented the creator programme as an application &rarr; review &rarr; approval state machine</b> over an earnings ledger keyed by source and content, with reviewer attribution, rejection reasons and hashed TOTP backup codes &mdash; the same review-and-approve shape an HR workflow runs on.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">ArchiCoPro &mdash; Members' Portal <span class="at">&middot; lead backend developer</span></p>
+      <span class="entry__when">Jun 2026 &ndash; Jul 2026</span>
+    </div>
+    <p class="entry__stack">archicopro.cloud &middot; FastAPI &middot; Tortoise ORM &middot; PostgreSQL &middot; Redis &middot; Celery &middot; Docker Compose &middot; Caddy &middot; GitHub Actions</p>
+    <ul>
+      <li><b>Designed feature-level access control where permissions are granted per role and overridden per person</b> &mdash; a feature enum with role permission tables plus per-user overrides, enforced per resource rather than per endpoint, so a document folder, article or training is visible only to the people entitled to it. This is the permission model an HRIS needs to keep employee records private.</li>
+      <li><b>Built the member-record and lifecycle domains</b> &mdash; a typed user status lifecycle, session and activity auditing with a typed action enum, registration flows for events and trainings, and a moderated-forum state machine with a full moderation audit trail.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">CHYR &mdash; Multi-Tenant B2B SaaS Platform <span class="at">&middot; backend developer</span></p>
+      <span class="entry__when">Apr 2026 &ndash; May 2026</span>
+    </div>
+    <p class="entry__stack">Python &middot; Django 5.2 &middot; DRF &middot; PostgreSQL &middot; Redis &middot; Celery + Beat &middot; Stripe &middot; Docker &middot; AWS EC2 (two regions)</p>
+    <ul>
+      <li><b>Modelled the organisation, membership and onboarding domain</b> &mdash; one organisation per owner with role-scoped member profiles, and an invitation flow issuing expiring unique tokens whose acceptance validates the password, creates the user and provisions the profile inside a single atomic transaction, so a half-created member cannot exist.</li>
+      <li><b>Built the subscription and metered-entitlement engine</b> &mdash; plans composed of features with usage limits, a Celery renewal task applying scheduled plan changes at the next billing cycle, and idempotent Stripe webhook processing keyed on a unique event ID.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">ProspectLead &mdash; Credit-Based SaaS <span class="at">&middot; lead backend developer</span></p>
+      <span class="entry__when">Jan 2026 &ndash; Jul 2026</span>
+    </div>
+    <p class="entry__stack">prospectlead.ai &middot; Django &middot; Django REST Framework &middot; PostgreSQL &middot; Redis &middot; Celery + Beat &middot; Stripe &middot; n8n &middot; Bruno</p>
+    <ul>
+      <li><b>Owned the billing engine end to end</b> &mdash; an append-only ledger carrying a running-balance snapshot per row, and reserve-on-submit / finalise-on-callback semantics so concurrent jobs cannot overspend a balance.</li>
+      <li><b>Made an external, long-running pipeline safe to depend on</b> &mdash; a bearer-token-authenticated inbound callback contract plus a <b>Celery Beat watchdog</b> that auto-fails and refunds any request still unanswered after six hours, so a silent third-party failure never strands a user's credits.</li>
+    </ul>
+  </div>
+
+  <p class="tail"><b>Also delivered</b> &mdash; <b>Tundra</b> (thundra.de &middot; three-service Django + FastAPI e-commerce estate) &middot; <b>Outdoorda</b> (FastAPI two-sided marketplace) &middot; <b>LookUp</b> (Django REST gamification backend) &middot; <b><code>django_templet</code></b>, my own reusable Django REST starter with Celery, Docker and CI/CD built in.</p>
+</section>
+
+<section>
+  <h2>Education &amp; Certifications</h2>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">B.Sc. in Computer Science &amp; Engineering</p>
+      <span class="entry__when">May 2020 &ndash; Jun 2024</span>
+    </div>
+    <p class="entry__meta">IUBAT &mdash; International University of Business Agriculture and Technology, Dhaka &middot; CGPA 3.59 / 4.00 &middot; Degree certificate issued 30 May 2024</p>
+    <ul>
+      <li><b>Thesis:</b> <i>Implementation of Parallel Data Transmission in Li-Fi Technology Using RGB Light</i>. <b>Coursework:</b> Data Structures &amp; Algorithms &middot; DBMS &middot; Software Engineering &middot; Computer Networks.</li>
+    </ul>
+  </div>
+
+  <p class="tail"><b>Python-Django</b> &mdash; EDGE, Enhancing Digital Government and Economy (Bangladesh Government ICT programme) &middot; Jul 2025 &nbsp;&middot;&nbsp; <b>Internship Certificate</b> &mdash; Cyber Hundred &middot; Jun 2024 &nbsp;&middot;&nbsp; References available on request.</p>
+</section>
+
+<section>
+  <h2>How I Work</h2>
+  <p>Every service I ship is containerised with a multi-stage <b>Docker</b> build, gated by a <b>GitHub Actions</b> pipeline that fails on migration drift and runs <code>pytest</code> inside the built image, then deployed to AWS EC2 or a VPS behind Nginx or Caddy. Each repository carries written developer guides and API documentation so the next engineer can pick it up without me, plus a hand-written <code>CONTEXT.md</code> encoding the architectural rules my daily <b>Claude Code</b> and <b>Cursor</b> sessions must follow &mdash; architecture, data modelling and code quality stay mine.</p>
+</section>
+
+</body>
+</html>
