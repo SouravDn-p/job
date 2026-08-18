@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdullah Md Jahid Hassan — Python Developer (FastAPI / PostgreSQL)</title>
+<style>
+/* ============================================================
+   Abdullah Md Jahid Hassan — CV
+   Target role : Python Developer — Belancer (Panthapath, Dhaka)
+                 freelancing marketplace platform
+   Tier        : 3 — on-site, Dhaka
+   Layout ref  : Assets/CV Templates/cv_temp_1.png
+                 single column - left-aligned rules - photo top-right
+                 (same skeleton as the Exabyting / Flyte / Foodi builds)
+
+   The JD's Core Stack is Python - FastAPI - PostgreSQL - REST API -
+   Docker - Nginx - AWS - Git/GitHub, and it names marketplaces,
+   fintech, payment systems, wallets and high-traffic platforms as a
+   strong advantage. Belancer IS a freelancing marketplace, so the
+   ordering here puts marketplace + money-movement evidence first and
+   keeps FastAPI ahead of Django throughout.
+
+   DevOps weighting (revised 18 Aug 2026 on Abdullah's correction):
+   The first draft under-weighted infrastructure - it carried one skills
+   row and one bullet. That was wrong. Per PROFILE.md §12 he is the de
+   facto DevOps engineer on every project (no separate infra engineer),
+   AND he unblocks colleagues' CI/CD, Docker, AWS and hosting on their
+   projects too. This build states that in the summary, gives it a
+   dedicated experience bullet, a cross-team bullet, a widened skills
+   row, and an Infrastructure & Deployment section. Room was made by
+   tightening the projects section, not by dropping evidence.
+
+   Register (corrected 18 Aug 2026, second pass):
+   The first DevOps revision overcorrected into self-congratulation
+   ("there is no separate DevOps engineer - I am it", "colleagues come
+   to me"). That is not CV register. Rewritten to state the scope of the
+   work and let the reader draw the conclusion. Rule now recorded in
+   CLAUDE.md and SKILL.md: no self-assessment, no self-congratulation,
+   no claims about how others regard him - only what was built, owned
+   and operated.
+
+   Honesty notes (CLAUDE.md hard rule 1):
+   - The "5+ Years" gate is NOT papered over. Exact dates are printed
+     (Aug 2025 for Softvence, Feb-Jul 2024 internship) and no career
+     total is stated anywhere on the page. Any reader can compute it.
+     The counterweight is delivery volume and the promotion, both real.
+   - "Marketplace" is claimed only where a real two-sided marketplace
+     was built (Outdoorda: customers <-> field installers, with
+     separate Payment and Payout models). Belancer's own domain
+     (freelancer marketplace) is never implied as prior experience.
+   - "Wallets" is claimed via ProspectLead's credit ledger and Tundra's
+     customer Wallet model - both real. No escrow claim is made
+     anywhere; escrow is absent from the profile.
+   - Nginx is claimed on Outdoorda (reverse proxy) and OCReels (media
+     cache headers); Caddy is named separately as what it is, not
+     folded into the Nginx claim.
+   - Kubernetes, RabbitMQ, Kafka and SQLAlchemy are absent from the
+     profile and appear nowhere here, not even softened.
+
+   Built against the three-gate model in
+   .claude/skills/cv-builder/references/ats-and-hiring-manager.md
+   ============================================================ */
+
+@page { size: A4; margin: 9mm 12mm; }
+
+:root {
+  --ink:        #111111;
+  --ink-soft:   #3d3d3d;
+  --ink-mute:   #5f5f5f;
+  --rule:       #111111;
+  --rule-light: #cfcfcf;
+  --link:       #1a3f6b;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0 auto;
+  padding: 20px 22px 24px;
+  max-width: 210mm;
+  font-family: Arial, "Helvetica Neue", Helvetica, "Liberation Sans", sans-serif;
+  font-size: 9pt;
+  line-height: 1.21;
+  color: var(--ink);
+  background: #ffffff;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  font-family: "Consolas", "DejaVu Sans Mono", monospace;
+  font-size: .94em;
+}
+
+/* ---------- Header ------------------------------------------------ */
+
+.masthead {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 7px;
+  border-bottom: 2.5px solid var(--rule);
+}
+
+.masthead__id { flex: 1 1 auto; min-width: 0; }
+
+h1 {
+  margin: 0 0 2px;
+  font-size: 20pt;
+  line-height: 1.06;
+  font-weight: 700;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin: 0 0 5px;
+  font-size: 10.2pt;
+  color: var(--ink-soft);
+  letter-spacing: .2px;
+}
+
+.contact {
+  margin: 0;
+  font-size: 8.7pt;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.contact span { white-space: nowrap; }
+.contact .sep { color: var(--rule-light); padding: 0 3px; }
+
+.masthead__photo {
+  flex: 0 0 auto;
+  width: 23mm;
+  height: 28.75mm;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid var(--rule-light);
+}
+
+/* ---------- Sections --------------------------------------------- */
+
+section { margin-top: 8px; }
+
+h2 {
+  margin: 0 0 5px;
+  padding-bottom: 2px;
+  border-bottom: 1.4px solid var(--rule);
+  font-size: 10pt;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+p { margin: 0 0 4px; }
+p:last-child { margin-bottom: 0; }
+
+/* ---------- Justification ----------------------------------------
+   House rule (CLAUDE.md § Justify the body copy): all body copy on a
+   CV is justified. Applied to running text only — headings, the
+   contact block, entry titles and date columns stay left-aligned,
+   because justifying a short single line just stretches it. */
+
+p, li { text-align: justify; text-justify: inter-word; }
+
+h1, h2,
+.tagline, .contact,
+.entry__head, .entry__title, .entry__when,
+.entry__meta, .entry__stack { text-align: left; }
+
+/* ---------- Skills ----------------------------------------------- */
+
+.skills > div { margin-bottom: 2px; }
+.skills .items { color: var(--ink-soft); }
+
+/* ---------- Entries (jobs, projects, education) ------------------- */
+
+.entry { margin-bottom: 6px; orphans: 2; widows: 2; }
+.entry:last-child { margin-bottom: 0; }
+
+.entry__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+.entry__title {
+  margin: 0;
+  font-size: 10pt;
+  font-weight: 700;
+}
+.entry__title .at { font-weight: 400; }
+
+.entry__when {
+  flex: 0 0 auto;
+  font-size: 8.6pt;
+  font-weight: 700;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.entry__meta {
+  margin: 1px 0 2px;
+  font-size: 8.6pt;
+  font-style: italic;
+  color: var(--ink-mute);
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+.entry__stack {
+  margin: 1px 0 2px;
+  font-size: 8.5pt;
+  color: var(--ink-mute);
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+ul { margin: 0; padding-left: 14px; }
+li { margin-bottom: 1px; orphans: 2; widows: 2; }
+li:last-child { margin-bottom: 0; }
+
+/* ---------- Tail lines ------------------------------------------- */
+
+.tail {
+  margin-top: 6px;
+  font-size: 8.6pt;
+  color: var(--ink-mute);
+}
+.tail b { color: var(--ink); }
+
+/* ---------- Print ------------------------------------------------- */
+
+@media print {
+  body { padding: 0; }
+  a { color: var(--ink); }
+  h2 { page-break-after: avoid; break-after: avoid; }
+  .masthead { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__id">
+    <h1>Abdullah Md Jahid Hassan</h1>
+    <p class="tagline">Python Developer &mdash; FastAPI &middot; REST APIs &middot; PostgreSQL &middot; Docker &middot; Nginx &middot; AWS</p>
+    <p class="contact">
+      <span>Uttara 10, Dhaka, Bangladesh</span><span class="sep">|</span><span>+880&nbsp;1756&nbsp;254873</span><span class="sep">|</span><span><a href="mailto:abdullahmdjahidhassan@gmail.com">abdullahmdjahidhassan@gmail.com</a></span><br>
+      <span><a href="https://www.linkedin.com/in/abdullahmdjahidhassan/">linkedin.com/in/abdullahmdjahidhassan</a></span><span class="sep">|</span><span><a href="https://github.com/abdullah-md-jahid-hassan">github.com/abdullah-md-jahid-hassan</a></span><span class="sep">|</span><span><a href="https://github.com/orgs/omnyvora/repositories">github.com/orgs/omnyvora</a></span><br>
+      <span><b>Languages:</b> Bangla (native) &middot; English (professional) &middot; Hindi (conversational)</span>
+    </p>
+  </div>
+  <img class="masthead__photo" src="profile-photo.png" alt="Abdullah Md Jahid Hassan">
+</header>
+
+<section>
+  <h2>Professional Summary</h2>
+  <p><b>Python developer</b> who builds and scales production backends and their <b>REST APIs</b> &mdash; eight client platforms in eleven months, <b>four on FastAPI</b> and four on Django REST Framework. Currently <b>Senior Python Executive at Softvence Agency</b>, promoted from Junior Python Developer within eleven months. The work maps onto this role directly: a <b>two-sided marketplace</b> backend with separate customer payments and provider payouts, a <b>high-traffic</b> video platform served across six domains behind a CDN and load-tested with Locust, and a credit-<b>wallet</b> engine behind Stripe and Tap <b>Payments</b>. <b>PostgreSQL</b> design and query optimization, <b>authentication and security</b> &mdash; JWT rotation and blacklisting, TOTP two-factor, RBAC, rate limiting &mdash; and <b>backend architecture</b> are the parts I own, through to production &mdash; <b>Docker</b>, <b>GitHub Actions</b> CI/CD, <b>Linux</b> server provisioning, <b>AWS</b> EC2, S3 and SES, and <b>Nginx</b> in front.</p>
+</section>
+
+<section>
+  <h2>Technical Skills</h2>
+  <div class="skills">
+    <div><b>Python &amp; FastAPI:</b> <span class="items"><b>Python</b> 3.11&ndash;3.13 (primary) &middot; <b>FastAPI 0.119</b> &middot; Pydantic v2 &middot; async/<code>await</code>, asyncio, application-factory and <code>lifespan</code> patterns &middot; Uvicorn &middot; Tortoise ORM + Aerich migrations &middot; asyncpg &middot; <b>Django 5.2 / Django REST Framework 3.16</b> &middot; Django Channels &middot; Gunicorn &middot; Celery 5 + Celery Beat</span></div>
+    <div><b>PostgreSQL &amp; database optimization:</b> <span class="items"><b>PostgreSQL</b> (primary; psycopg3, asyncpg) &middot; MySQL &middot; SQLite &middot; Redis 7 &middot; <b>database design</b>, normalisation and ER modelling &middot; <b>query optimization</b> &mdash; composite indexing, N+1 elimination via <code>select_related</code>/<code>prefetch_related</code>, <code>bulk_update</code> over per-row saves &middot; database-level constraints, custom managers, soft delete &middot; migrations and drift gating</span></div>
+    <div><b>REST API development &amp; integration:</b> <span class="items"><b>REST API</b> design, versioning and documentation &middot; unified response envelope &middot; pagination, filtering, throttling &middot; Swagger / OpenAPI &middot; idempotent webhook contracts &middot; <b>integrations</b>: Stripe, Tap Payments, OpenAI, Twilio, Firebase Cloud Messaging, Google OAuth 2.0, n8n</span></div>
+    <div><b>Authentication, security &amp; backend architecture:</b> <span class="items"><b>JWT</b> with refresh-token rotation and blacklisting (SimpleJWT, python-jose, PyJWT) &middot; <b>OAuth 2.0</b> / Google social login &middot; TOTP two-factor (<code>pyotp</code>) &middot; SHA-256 hashed single-use OTP &middot; <b>RBAC</b>, permission groups and per-resource overrides &middot; bcrypt / passlib &middot; rate limiting, CORS and CSRF hardening &middot; multi-tenancy &middot; modular monolith with domain-driven service/selector layering</span></div>
+    <div><b>Docker, Nginx, Linux &amp; AWS:</b> <span class="items"><b>Docker</b> / Dockerisation (multi-stage builds, Compose stacks split by concern) &middot; <b>Nginx</b> reverse proxy &middot; Caddy &middot; <b>Linux</b> server provisioning, SSH key management, deploy users &middot; <b>AWS</b> EC2 (multi-region, Elastic IP), IAM, <b>S3</b> with bucket policies, <b>SES</b>/SMTP with DKIM and DMARC, RDS &middot; Cloudflare R2 and CDN &middot; Hostinger VPS &middot; <b>GitHub Actions CI/CD</b> &middot; database provisioning and backups</span></div>
+    <div><b>Git, testing &amp; debugging:</b> <span class="items"><b>Git / GitHub</b> &mdash; branching strategies, pull-request workflow, code review &middot; pytest + pytest-asyncio &middot; Django <code>TestCase</code> &middot; Bruno and Postman collections &middot; <b>Locust</b> load testing &middot; Sentry &middot; structured logging with request-scoped context &middot; live health dashboards</span></div>
+    <div><b>Marketplace, payments &amp; high-traffic platforms:</b> <span class="items">Two-sided <b>marketplace</b> modelling &mdash; service areas, availability, ratings, admin-configurable commission and payout terms &middot; separate <b>payment</b> and <b>payout</b> money movement &middot; <b>Stripe</b> subscriptions, invoices and idempotent webhooks &middot; <b>Tap Payments</b> with retry/dunning &middot; credit-<b>wallet</b> ledgers &middot; CDN-fronted media and multi-domain CORS estates</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Professional Experience</h2>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Senior Python Executive <span class="at">&mdash; Softvence Agency</span></p>
+      <span class="entry__when">Aug 2025 &ndash; Present</span>
+    </div>
+    <p class="entry__meta">Mohakhali, Dhaka &middot; Full-time, on-site &middot; Promoted from Junior Python Developer, Jul 2026</p>
+    <ul>
+      <li><b>Built and scaled eight production client backends and their REST APIs</b> in eleven months &mdash; <b>four on FastAPI</b>, four on Django REST Framework &mdash; each owned end to end from data model through API, containerisation and live deployment.</li>
+      <li><b>Promoted from Junior Python Developer to Senior Python Executive within eleven months</b>, on end-to-end delivery ownership across those projects.</li>
+      <li><b>Delivered the money-movement layer on marketplace and SaaS platforms</b> &mdash; separate customer-payment and provider-payout models, credit-wallet ledgers with a running-balance snapshot on every row, and a dual-provider payment abstraction spanning <b>Stripe</b> and <b>Tap Payments</b>, so a business is only registered with a payment provider on its first charge.</li>
+      <li><b>Design PostgreSQL schemas and the queries that read them efficiently</b> &mdash; normalised models with database-level uniqueness constraints and composite indexes on every query path, N+1 elimination through <code>select_related</code>/<code>prefetch_related</code>, and bulk writes instead of per-row saves.</li>
+      <li><b>Own authentication, security and backend architecture</b> across projects &mdash; JWT with refresh-token rotation and blacklisting, SHA-256-hashed single-use OTP, TOTP two-factor, per-scope rate limiting, multi-tenant role-based access control with expiring invitation tokens, and a custom permission class that closes a real gap in DRF by enforcing read permissions that its default deliberately skips.</li>
+      <li><b>Own the infrastructure alongside the application code on every project</b> &mdash; multi-stage <b>Docker</b> images, <b>GitHub Actions</b> CI/CD, <b>Linux</b> server provisioning, database setup and backups, <b>S3</b> buckets and policies, SES/SMTP with DKIM and DMARC records, and <b>Nginx</b> or Caddy as reverse proxy.</li>
+      <li><b>Resolve deployment and infrastructure issues on colleagues' projects as well as my own</b> &mdash; debugging <b>CI/CD</b> pipelines, <b>Docker</b> builds, <b>AWS</b> provisioning and hosting configuration across the team's projects.</li>
+      <li><b>Debug production systems from structured evidence</b> &mdash; a non-blocking structured-logging pipeline writing to a queryable log model with request-scoped context (request ID, actor, IP) carried through <code>contextvars</code>, plus Sentry and a live health dashboard covering database, Redis, SMTP and Celery.</li>
+      <li><b>Integrate third-party APIs so retries and replays are safe</b> &mdash; Stripe, Tap Payments, OpenAI, Twilio, Firebase Cloud Messaging and n8n, each behind an idempotent webhook table keyed on a unique provider event ID, or an authenticated callback contract.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Founder, Lead Engineer &amp; Designer <span class="at">&mdash; Omnyvora</span></p>
+      <span class="entry__when">Jun 2026 &ndash; Present</span>
+    </div>
+    <p class="entry__meta">Own organisation &middot; github.com/orgs/omnyvora &middot; Sole contributor</p>
+    <ul>
+      <li><b>Took a multi-tool SaaS platform from a blank repository to a running stack alone</b> &mdash; a Django REST modular monolith across four bounded domains with strict <code>models &rarr; selectors &rarr; services &rarr; views</code> layering and no cross-domain foreign keys, so any domain can be extracted into its own service without a rewrite. Containerisation, CI/CD and deployment included.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Web Development Intern <span class="at">&mdash; Cyber Hundred</span></p>
+      <span class="entry__when">Feb 2024 &ndash; Jul 2024</span>
+    </div>
+    <p class="entry__meta">Khilkhet, Dhaka &middot; On-site &middot; Certificate issued Jun 2024</p>
+    <ul>
+      <li>Built frontend and backend features in HTML5, CSS, Bootstrap, PHP and MySQL across multiple client web projects; managed databases through phpMyAdmin; used Git and GitHub collaboratively.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Selected Projects</h2>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">Outdoorda &mdash; Two-Sided Field-Service Marketplace <span class="at">&middot; backend developer</span></p>
+      <span class="entry__when">Jun 2026</span>
+    </div>
+    <p class="entry__stack">FastAPI &middot; Tortoise ORM &middot; REST API &middot; Docker Compose &middot; <b>Nginx</b> reverse proxy &middot; Linux VPS</p>
+    <ul>
+      <li><b>Modelled a two-sided marketplace matching customers to field installers</b> &mdash; customer profiles on one side, and on the other a service-area coverage map, availability windows and ratings, so a job reaches only providers who cover it and are free.</li>
+      <li><b>Separated the two directions money travels</b> &mdash; distinct <code>Payment</code> (customer &rarr; platform) and <code>Payout</code> (platform &rarr; installer) models, with job-routing, commission and payout terms in admin-editable settings so the business changes its own rules without a deploy. Deployed behind <b>Nginx</b> on a Linux VPS.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">OCReels &mdash; High-Traffic Short-Video Platform <span class="at">&middot; backend developer</span></p>
+      <span class="entry__when">Jun 2026 &ndash; Jul 2026</span>
+    </div>
+    <p class="entry__stack">ocreels.com &middot; FastAPI 0.119 &middot; Pydantic v2 &middot; Tortoise ORM + Aerich &middot; PostgreSQL (asyncpg) &middot; Redis &middot; Celery &middot; Locust &middot; Docker &middot; AWS EC2 + RDS &middot; Cloudflare R2</p>
+    <ul>
+      <li><b>Built on a fully asynchronous, auto-discovering FastAPI architecture</b> &mdash; an application factory whose async <code>lifespan</code> initialises database, Redis, scheduler and permission sync, then registers routes dynamically, so adding a domain needs no change to <code>main.py</code>.</li>
+      <li><b>Served the platform at production scale</b> &mdash; media behind a CDN origin on Cloudflare R2 with immutable one-year cache headers, <b>Locust</b> load testing and Sentry in the loop, and CORS, CSRF and cookie-domain configuration across a six-domain estate, on <b>AWS</b> EC2 with an Elastic IP, RDS and scoped IAM users.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">ProspectLead &mdash; Credit-Wallet SaaS Platform <span class="at">&middot; lead backend developer</span></p>
+      <span class="entry__when">Jan 2026 &ndash; Jul 2026</span>
+    </div>
+    <p class="entry__stack">prospectlead.ai &middot; Python &middot; Django REST Framework &middot; PostgreSQL &middot; Redis &middot; Celery + Beat &middot; Stripe &middot; Docker &middot; Caddy &middot; Bruno</p>
+    <ul>
+      <li><b>Owned the credit-wallet billing engine end to end</b> &mdash; an append-only transaction ledger storing signed amounts, a typed reason and a running-balance snapshot per row, with reserve-on-submit / finalise-on-callback semantics so concurrent jobs cannot overspend a balance, and automatic refunds when a job under-delivers.</li>
+      <li><b>Made Stripe and an external long-running pipeline safe to depend on</b> &mdash; checkout sessions recorded against a webhook table with a unique event ID so replays are idempotent, plus a <b>Celery Beat watchdog</b> that auto-fails and refunds any request unanswered after six hours.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">CHYR &mdash; Multi-Tenant B2B SaaS Platform <span class="at">&middot; backend developer</span></p>
+      <span class="entry__when">Apr 2026 &ndash; May 2026</span>
+    </div>
+    <p class="entry__stack">Python &middot; Django 5.2 &middot; DRF &middot; PostgreSQL &middot; Redis &middot; Celery + Beat &middot; Stripe &middot; Tap Payments &middot; Docker &middot; AWS EC2 (two regions), IAM, SES</p>
+    <ul>
+      <li><b>Built the dual payment-provider abstraction</b> &mdash; payment, invoice, webhook-event and payment-method models over a provider enum, with customer records created lazily on first charge, plus a subscription engine covering trials, metered usage, scheduled plan changes and a Tap retry/dunning state machine.</li>
+    </ul>
+  </div>
+
+  <p class="tail"><b>Also delivered</b> &mdash; <b>ArchiCoPro</b> (archicopro.cloud &middot; FastAPI members' portal, lead backend developer) &middot; <b>Tundra</b> (thundra.de &middot; three-service Django + FastAPI estate, each service independently containerised with its own CI/CD pipeline behind one proxy, including the client's server-setup and handover guide) &middot; <b>LookUp</b> (Django REST geospatial backend, sole developer).</p>
+</section>
+
+<section>
+  <h2>Infrastructure &amp; Deployment</h2>
+  <p>Every service ships in a multi-stage <b>Docker</b> build whose entrypoint runs migrations before the server starts, behind a <b>GitHub Actions</b> pipeline that fails on migration drift, pushes the image, then deploys over SSH with a pull-retry loop. Server-side work covers <b>Linux</b> host and <b>AWS</b> account provisioning &mdash; EC2 with scoped IAM users, <b>PostgreSQL</b>, <b>S3</b> with explicit bucket policies, SES with DKIM and DMARC records, <b>Nginx</b> or Caddy as reverse proxy, and per-project backups of database, environment and server configuration.</p>
+</section>
+
+<section>
+  <h2>Education &amp; Certifications</h2>
+
+  <div class="entry">
+    <div class="entry__head">
+      <p class="entry__title">B.Sc. in Computer Science &amp; Engineering</p>
+      <span class="entry__when">May 2020 &ndash; Jun 2024</span>
+    </div>
+    <p class="entry__meta">IUBAT &mdash; International University of Business Agriculture and Technology, Dhaka &middot; CGPA 3.59 / 4.00 &middot; Degree certificate issued 30 May 2024</p>
+    <ul>
+      <li><b>Thesis:</b> <i>Implementation of Parallel Data Transmission in Li-Fi Technology Using RGB Light</i>. <b>Coursework:</b> Data Structures &amp; Algorithms &middot; DBMS &middot; Software Engineering &middot; Operating Systems &middot; Computer Networks.</li>
+    </ul>
+  </div>
+
+  <p class="tail"><b>Python-Django</b> &mdash; EDGE, Enhancing Digital Government and Economy (Bangladesh Government ICT programme) &middot; Jul 2025 &nbsp;&middot;&nbsp; <b>Internship Certificate</b> &mdash; Cyber Hundred &middot; Jun 2024 &nbsp;&middot;&nbsp; References available on request.</p>
+</section>
+
+</body>
+</html>
