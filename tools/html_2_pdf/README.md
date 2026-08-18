@@ -138,6 +138,15 @@ Exit codes: `0` success · `1` usage or input error · `2` no browser found ·
 
 ## Notes and gotchas
 
+- **Review the HTML before you render — not the PDF after.** This tool is the
+  *last* step of a CV build, not a review loop. Build the HTML, read the HTML
+  back and check it, fix the HTML, check it again; render only when the markup
+  review passes, then review the rendered PDF **once**. Bouncing HTML → PDF →
+  HTML → PDF to chase small defects burns a full render and a full page-image
+  read for problems that were already visible in the markup. If a PDF review
+  does turn something up, fix every issue in one pass and re-check the HTML
+  before re-rendering. House rule — the long form lives in
+  `.claude/skills/cv-builder/SKILL.md` § Step 5a.
 - **An existing PDF is never replaced silently.** Interactively you get a y/N
   prompt; non-interactively it fails and asks for `--force`. Once a CV has been
   sent, the file that was sent should stay exactly as it was.

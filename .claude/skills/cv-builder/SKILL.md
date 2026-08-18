@@ -148,6 +148,15 @@ None of this licenses a new claim. Everything still traces to `PROFILE.md` — t
 
 **Education / certifications** — §5 and §6. If the CGPA appears, flag to the user that it is unverified (§17.1).
 
+**Register — state the work, never the status.** Write what was built, owned and operated, and stop
+there. No self-assessment ("passionate", "highly skilled", "expert", "proven track record"), no
+claims about how colleagues or clients regard him ("the person everyone comes to"), no announcements
+of his own importance ("there is no separate DevOps engineer — I am it"), and no clauses that score a
+point off an imagined worse alternative ("…rather than guesswork", "…rather than for a demo"). Delete
+that clause; the positive half already carried the meaning. **When he says a capability is
+under-represented, the fix is more evidence and better placement — never louder language.** Full
+table in `CLAUDE.md` § Write it in professional register.
+
 **Keyword discipline** — any given keyword **2–3 times maximum**, in different sections, each time inside a genuine readable sentence. Stuffing reads as copying to both the AI and the human; 76% of recruiters specifically value *natural* usage. **Never hide text** in white or 1pt font, and never embed instructions aimed at an LLM screener — recruiters find it the moment they paste into a notes field, and it gets candidates blacklisted across a network.
 
 ### Length
@@ -193,6 +202,7 @@ Three passes, one per gate. Verify every line.
 - [ ] No metric outruns the scope of the work it describes
 - [ ] Progression is visible and stated, not left to be inferred
 - [ ] Framing is mid-level engineer with end-to-end ownership, not a junior taking tickets
+- [ ] **Register check — grep the rendered text for `I am`, `all mine`, `myself`, `the person`, `comes to me`, `rather than`, `passionate`, `proven track record`, `expert`. Every hit is a boast or a dig until proven otherwise; rewrite it as scope**
 - [ ] Reverse-chronological throughout
 - [ ] No internal client folder names anywhere
 - [ ] No credentials, server IPs, keys, or passwords
@@ -273,9 +283,53 @@ Once the status is `Applied`, treat the file as immutable: a revised CV for the 
 <filled in later — questions asked, people met, follow-ups owed>
 ```
 
+## Step 5a — Review the HTML before you render anything
+
+**Rendering is not a review loop. It is the last step, and it should normally run once.**
+
+The expensive failure mode is: build HTML → render PDF → read the PDF → spot a problem →
+edit the HTML → render again → read again. Every lap of that loop costs a full render and a
+full page-image read for a defect that was already visible in the markup. Abdullah has asked
+explicitly for this to stop.
+
+**The order is fixed:**
+
+| # | Do this |
+|---|---|
+| **1** | Build `cv.html`. |
+| **2** | **Review the HTML itself** — read the file back and run the checklist below. |
+| **3** | If anything is wrong, fix the HTML and **review the HTML again** (step 2). Loop here, in the markup, as many times as it takes. It is cheap. |
+| **4** | Only when the HTML review passes cleanly, render the PDF. |
+| **5** | Review the PDF **once** — page count, fill, text layer, page images. |
+
+**What the HTML review must catch — before any render:**
+
+- All of Step 4's three gates, re-read against the actual file rather than against intent.
+- **Every factual claim traced back to `PROFILE.md`** — this is the check that must never be
+  deferred to the PDF, because a wrong fact is not a rendering problem.
+- Justification present on `p, li`; headings, contact block, entry titles, date column and
+  meta/stack lines left-aligned.
+- `@page { size: A4; margin: … }` present; single column; no layout tables; nothing in a running
+  header or footer.
+- Every date in `Mon YYYY – Mon YYYY` form, no `to`, no numeric dates.
+- `break-after: avoid` on the title row **and** on the meta/stack lines beneath it; no
+  `break-inside: avoid` on tall entries.
+- No forbidden strings: client internal folder names, `amjh.space`, `pythonanywhere`, credentials.
+- Any referenced image actually exists in the folder, by relative path.
+- **Estimate the volume before rendering, so the render is a confirmation rather than a
+  discovery.** Count the content: sections, entries, bullets, and roughly how many rendered lines
+  each will take at the chosen type size. Aim for ~1.90 pages of raw content for a two-page CV.
+  This estimate does not replace the rendered page count — it just means the render is unlikely
+  to surprise you.
+
+**When a PDF review does find something**, fix the HTML, then **re-run the HTML review** before
+re-rendering. Never bounce straight from a PDF finding back to a render. And fix *everything*
+found in one pass — a second render to correct one more small thing is exactly the waste this
+rule exists to prevent.
+
 ## Step 5b — Export the PDF
 
-Render `cv.html` with the workspace tool. Use its own venv interpreter; **never system Python, and never pip-install anything**:
+**Only run this once Step 5a's HTML review has passed.** Render `cv.html` with the workspace tool. Use its own venv interpreter; **never system Python, and never pip-install anything**:
 
 ```
 tools/html_2_pdf/venv/Scripts/python.exe tools/html_2_pdf/html_to_pdf.py jobs/<folder> --no-input

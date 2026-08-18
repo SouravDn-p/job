@@ -237,6 +237,43 @@ Pick 3–5 projects using each project's "Best for JDs about…" tag; do not dum
 
 **State the progression explicitly.** Junior Python Developer → Senior Python Executive in eleven months is one of the strongest signals I have; don't leave it to be inferred from two title lines.
 
+### Write it in professional register — never sell, never boast
+
+**State what was built, owned and operated. Let the reader draw the conclusion.** A CV is a
+professional document, not a pitch. The facts in `PROFILE.md` are strong on their own; dressing them
+up makes them read as insecure and, to a hiring manager, as unverifiable.
+
+**Never write any of these, on a CV or in any document produced for me:**
+
+| Don't | Why | Instead |
+|---|---|---|
+| "There is no separate DevOps engineer — I am it" | Announces status, not work | "Own the infrastructure alongside the application code — Docker, CI/CD, Linux provisioning, S3, SES, Nginx" |
+| "The person colleagues come to when…" | Reports how others regard me | "Resolve deployment and infrastructure issues on colleagues' projects as well as my own" |
+| "…rather than guesswork", "…rather than for a demo", "…rather than tenure" | Scores a point off an imagined worse alternative | Delete the clause; the positive half already says it |
+| "Passionate", "highly skilled", "proven track record", "expert", "world-class" | Self-assessment, zero evidential value | A bullet with scope and an outcome |
+| "all mine", "I did it myself", emphatic "personally" | Possessive and defensive | Plain ownership verbs — "own", "build", "operate", "deploy" |
+
+**Emphasis is achieved by placement and specificity, not by volume.** If something is important, put
+it in the top third of page 1 and give it a concrete detail — *"SES with DKIM and DMARC records"*
+beats *"I handle all the email infrastructure myself"* every time.
+
+**This applies to the whole document, including the parts I ask you to strengthen.** If I tell you
+something is under-represented, the fix is *more evidence and better placement*, never louder
+language. Adding volume instead of substance is the failure mode to avoid.
+
+### Review the HTML first, render once
+
+**The PDF is the last step of a build, not a review loop.** Build `cv.html`, then review the
+**HTML itself** — facts against `PROFILE.md`, the three gates, justification, dates, page-break
+rules, forbidden strings. If something is wrong, fix the HTML and review the HTML again. Loop in
+the markup; it is cheap. Render the PDF only once the HTML review passes, then review the
+rendered PDF **once**.
+
+Do not bounce HTML → PDF → HTML → PDF chasing small defects. Each lap costs a full render plus a
+full page-image read to catch something that was already visible in the markup. If a PDF review
+does find a problem, fix everything in one pass and re-check the HTML before re-rendering. The
+long form is in `.claude/skills/cv-builder/SKILL.md` § Step 5a.
+
 ### Length
 
 **Content decides page count; page count never decides content.** The one-page rule is not evidence-based — in a blind study of 482 recruiters, two-page CVs were preferred 1.4× at entry level and 2.6× at mid-level. **Two pages is the normal target for me**; one page when the JD-relevant material is genuinely thin; **never three** for an engineering role.

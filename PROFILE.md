@@ -128,6 +128,8 @@ I started as a CSE graduate with a strong software-engineering-process foundatio
 - Implemented **structured observability**: a non-blocking `QueueHandler`-based logging pipeline writing to a queryable `SystemLog` model with request-scoped context (`request_id`, actor identity, IP, user agent) carried through `contextvars`, plus JSON formatting for downstream aggregation, and a live HTML health dashboard covering database, Redis, SMTP, Celery worker and Celery Beat.
 - Designed **multi-tenant, role-based access control** across projects: organisation/business scoping, invitation flows with expiring tokens, super-admin consoles, and a strict permission class that closes DRF's default gap by enforcing `view_<model>` on safe methods.
 - Produced **formal client-facing SDLC documentation** — requirement analysis, functional/non-functional requirement tables, use-case, activity, swimlane and ER diagrams, data-flow diagrams to four levels, function-point estimation, effort distribution, task scheduling, cost estimation (personnel + infrastructure + third-party), feasibility assessment and an RMMM risk plan — delivered as versioned system design documents during client onboarding.
+- **Acted as the de-facto DevOps engineer on every project I own** — there is no separate infrastructure engineer, so containerisation, CI/CD, server provisioning, database setup and operation, object storage, mail configuration, reverse proxy and deployment are all mine, on top of writing the backend.
+- **Unblock other engineers' infrastructure, not only my own** — regularly debug and fix colleagues' CI/CD pipelines, Docker builds, AWS provisioning and hosting configuration when a deployment problem is holding up their project, making me the person the team comes to when the blocker is infrastructure rather than application code.
 - Used **AI coding agents (Claude Code, Cursor) as accelerators** while personally retaining ownership of architecture, system design, data modelling and code quality; every project carries a hand-written `CONTEXT.md`/`CLAUDE.md` that encodes the architectural rules the agent must follow.
 - Wrote and maintained **API contract documentation and test collections** (Bruno collections, Postman collections, Swagger/OpenAPI via `drf-yasg`), and maintained per-app developer guides so other engineers could pick projects up.
 
@@ -727,13 +729,48 @@ Use these to answer "what kind of engineer are you?" bullets in a JD.
 | **Testing** | Django `TestCase` suites for admin console, activity selectors, auth, logs; Vitest + Testing Library on the frontend; Bruno and Postman API collections; Locust load testing on the FastAPI platform; containerised `manage.py test` step inside CI |
 | **Code-quality gates in CI** | `makemigrations --check --dry-run` migration-drift gate; ESLint with `--max-warnings 0`; `tsc --noEmit` type-check |
 | **AI-assisted, human-owned** | Claude Code / Cursor used as accelerators; each repo carries a hand-written `CONTEXT.md` / `CLAUDE.md` encoding the architectural rules the agent must obey — and on LookUp a formal `ai_rules.md` engineering constitution (performance-first, no placeholders, strict separation of concerns). Architecture, system design and code quality remain mine |
+| **Infrastructure ownership without a DevOps team** | No separate DevOps or infra engineer on any project in §7/§8 — Docker, GitHub Actions CI/CD, AWS EC2/IAM/S3/SES/RDS, Nginx/Caddy, database provisioning and server operation are all mine, in addition to the backend itself |
+| **Cross-team infrastructure support** | The engineer colleagues come to when a deployment, pipeline, Docker build, AWS setup or hosting problem is blocking *their* project — infrastructure debugging beyond the codebases I wrote (§12) |
 | **Client-facing knowledge transfer** | The Tundra `HANDOVER.md` — a 6-chapter guide written for a non-technical owner covering AWS setup through to revoking my own access and rolling the Stripe keys; the ProspectLead `Context.md` product spec; per-app developer guides on every project |
 | **Design capability alongside backend** | Omnyvora design system + 4 workspace designs + 33 component specs; ProspectLead landing page and dashboard/auth screens; a written page-by-page visual design critique of the CHYR dashboard; structured design briefs that separate content/structure from styling |
 | **Knowledge-graph tooling** | Generated and maintain `graphify-out/` knowledge graphs of both Omnyvora repos (1,304 nodes / 2,511 edges backend; 1,523 nodes / 2,872 edges frontend) to audit coupling, detect import cycles and surface god nodes |
 
 ---
 
-## 12. DEVOPS & INFRASTRUCTURE (I do all of this myself)
+## 12. DEVOPS & INFRASTRUCTURE (I do all of this myself — on my projects and on other people's)
+
+> **Agent note — do not under-weight this section.** DevOps is not a sideline next to my backend
+> work; it is a co-equal half of what I deliver. On every project listed in §7 and §8 I personally
+> did the containerisation, the CI/CD pipeline, the server provisioning, the database setup and
+> operation, the object storage, the mail configuration, the reverse proxy and the deployment —
+> there is no separate infrastructure engineer on these projects.
+>
+> **This is context for you, not CV copy.** Give infrastructure real weight in the CV, but write it
+> in plain professional register — see the framing rule below.
+>
+> **And it is not confined to my own projects.** I am the person colleagues at Softvence come to
+> when a deployment, a pipeline, a Docker build, an AWS setup or a hosting problem is blocking
+> *their* project — I debug and fix other engineers' CI/CD, AWS, Dockerisation and hosting, not
+> only my own. Treat this as cross-team infrastructure support, and put it on a CV whenever the JD
+> mentions DevOps, deployment, infrastructure, cloud, containers, CI/CD, Linux or mentoring —
+> **and also when the JD merely lists Docker, Nginx or AWS in its stack**, because that stack line
+> is exactly what this section answers.
+>
+> *(Recorded 18 Aug 2026, stated directly by me. Scope deliberately kept unquantified — describe it
+> as ongoing cross-project support, never with an invented project or colleague count.)*
+
+**Cross-project / cross-team infrastructure support**
+- **The person others come to when deployment is the blocker.** I debug and fix **other engineers'
+  CI/CD pipelines, AWS setups, Docker builds and hosting** at Softvence, alongside owning my own —
+  so the infrastructure knowledge is not confined to the projects I wrote.
+- This is unblocking work: a broken pipeline, a container that will not build, a server or hosting
+  configuration that will not come up, a cloud account that is not set up right.
+- **CV framing — state the work, never the status.** Write it as *"resolve deployment and
+  infrastructure issues on colleagues' projects as well as my own — CI/CD pipelines, Docker builds,
+  AWS provisioning and hosting configuration"*. **Do not** write "the person everyone comes to",
+  "I am the DevOps engineer", "there is no separate infra engineer — I am it", or anything else
+  that praises me or reports how colleagues regard me. That reads as arrogance and does not belong
+  in a professional document. The facts are strong enough on their own.
 
 **Containerisation**
 - Multi-stage Dockerfiles (builder stage compiles wheels into a venv; runtime stage copies only the venv + app code for a lean image), `entrypoint.sh` handling migrations / collectstatic / server launch, `.dockerignore` hygiene.
@@ -870,7 +907,7 @@ End-to-end project ownership · Cross-functional collaboration (frontend, design
 
 **Auth & security:** JWT, OAuth 2.0, Google OAuth, SimpleJWT, token refresh, token rotation, token blacklisting, OTP, two-factor authentication, TOTP, RBAC, role-based access control, permissions, authentication, authorisation, rate limiting, throttling, bcrypt, password hashing, CORS, CSRF
 
-**DevOps:** Docker, Docker Compose, containerisation, multi-stage build, CI/CD, GitHub Actions, continuous integration, continuous deployment, pipeline, AWS, EC2, IAM, S3, SES, RDS, Cloudflare R2, VPS, Hostinger, Nginx, Caddy, reverse proxy, Gunicorn, Uvicorn, Linux, SSH, deployment, infrastructure, monitoring, health checks, logging, observability, structured logging
+**DevOps:** Docker, Docker Compose, containerisation, Dockerisation, multi-stage build, CI/CD, GitHub Actions, continuous integration, continuous deployment, pipeline, build pipeline, deployment pipeline, AWS, EC2, IAM, S3, S3 bucket, SES, SMTP, RDS, Cloudflare R2, VPS, Hostinger, Nginx, Caddy, reverse proxy, Gunicorn, Uvicorn, Linux, Linux server administration, server management, SSH, deployment, release management, infrastructure, infrastructure as ownership, cloud infrastructure, provisioning, environment configuration, secrets management, monitoring, health checks, logging, observability, structured logging, backup and recovery, troubleshooting, production support
 
 **Frontend:** Next.js, React, TypeScript, JavaScript, Tailwind CSS, shadcn/ui, Radix UI, TanStack Query, React Query, Zustand, Redux, Redux Toolkit, React Hook Form, Zod, Vite, responsive design, UI/UX, design system, design tokens, accessibility, dark mode, i18n, internationalisation, PWA
 
